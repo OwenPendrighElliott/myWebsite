@@ -1,0 +1,30 @@
+.App {
+  text-align: left;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 5%;
+  justify-content: top;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+a{
+  color: white;
+}
+
+.sysmon {
+    display: flex;
+    justify-content: center;
+}
