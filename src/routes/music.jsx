@@ -7,9 +7,9 @@ class Music extends Component {
     }
     render(){
         return (
-        <Typography>
-            This is where my music will go.
-        </Typography>
+            <p className="ptext">            
+                This is where my music will go.
+            </p>
     );
 }
     componentDidMount() {

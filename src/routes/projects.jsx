@@ -7,9 +7,9 @@ class Projects extends Component {
     }
     render(){
         return (
-        <Typography>
-            This is where my projects will go.
-        </Typography>
+            <p className="ptext">            
+                This is where my projects will go.
+            </p>
     );
 }
     componentDidMount() {

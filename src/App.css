@@ -1,9 +1,10 @@
 .App {
   text-align: left;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #1e1e1e;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -20,6 +21,10 @@
   color: #61dafb;
 }
 
+.ptext {
+    font-size: medium;
+}
+
 a{
   color: white;
 }
@@ -27,4 +32,8 @@ a{
 .sysmon {
     display: flex;
     justify-content: center;
+}
+
+.gap {
+    padding-top: 3vh;
 }

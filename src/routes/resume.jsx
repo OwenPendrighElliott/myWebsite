@@ -7,9 +7,9 @@ class Resume extends Component {
     }
     render(){
         return (
-        <Typography>
-            This is where my resume will go.
-        </Typography>
+            <p className="ptext">            
+                This is where my resume will go.
+            </p>
     );
 }
     componentDidMount() {
