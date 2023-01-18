@@ -26,12 +26,10 @@
     outline: none;
 }
 
-input, textarea {
-    /* font    : .9em/1.5em "handwriting", sans-serif; */
+textarea {
     border  : none;
     padding : 0 10px;
     margin  : 0;
-    width   : 240px;
     display: inline-block;
     background: none;
     font-family: 'Red Hat Mono', monospace;
@@ -42,15 +40,14 @@ input, textarea {
     word-wrap: break-word;
     word-break: break-all;
 
-    /* width: 100%; */
-    /* box-sizing: border-box; */
-}
+    
 
-/* .terminal-line {
-    vertical-align: top;
-} */
-
-textarea {
-    display: block;
     resize: none;
+    width: auto; 
+    width: 80%;
 }
+
+.terminal-line *{
+    vertical-align: top;
+}
+
