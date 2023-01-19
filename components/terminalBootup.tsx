@@ -18,10 +18,10 @@ Hint: Run 'help' to see available commands
 
 const LoginMessage = () => {
   return (
-    <div className={"typing-container"}>
-      <p className='typed'>{loginMessage}</p>
+    <div className={'typing-container'}>
+      <p className="typed">{loginMessage}</p>
     </div>
   );
-}
+};
 
 export default LoginMessage;

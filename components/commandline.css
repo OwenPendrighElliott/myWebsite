@@ -11,43 +11,40 @@
 }
 
 .terminal {
-    font-family: 'Red Hat Mono', monospace;
-    color: green;
-    background-color: black;
-    font-size: 16px;
-    min-height: 100%;
+  font-family: 'Red Hat Mono', monospace;
+  color: green;
+  background-color: black;
+  font-size: 16px;
+  min-height: 100%;
 }
 
 .terminal textarea:focus input:focus {
-    outline: none;
+  outline: none;
 }
 
 .terminal *:focus {
-    outline: none;
+  outline: none;
 }
 
 textarea {
-    border  : none;
-    padding : 0 10px;
-    margin  : 0;
-    display: inline-block;
-    background: none;
-    font-family: 'Red Hat Mono', monospace;
-    color: green;
-    background-color: black;
-    font-size: 16px;
+  border: none;
+  padding: 0 10px;
+  margin: 0;
+  display: inline-block;
+  background: none;
+  font-family: 'Red Hat Mono', monospace;
+  color: green;
+  background-color: black;
+  font-size: 16px;
 
-    word-wrap: break-word;
-    word-break: break-all;
+  word-wrap: break-word;
+  word-break: break-all;
 
-    
-
-    resize: none;
-    width: auto; 
-    width: 80%;
+  resize: none;
+  width: auto;
+  width: 80%;
 }
 
-.terminal-line *{
-    vertical-align: top;
+.terminal-line * {
+  vertical-align: top;
 }
-
