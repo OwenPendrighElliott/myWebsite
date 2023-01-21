@@ -8,7 +8,7 @@ let promptLine = 'guest@my-website:~';
 function interleaveHistory(commands: string[], responses: string[]): string[] {
   let interleavedArr: string[] = [];
   for (let i = 0; i < commands.length; i++) {
-    interleavedArr.push('guest@my-website:-$ ' + commands[i], responses[i]);
+    interleavedArr.push(commands[i], responses[i]);
   }
   return interleavedArr;
 }
@@ -37,7 +37,6 @@ function CommandLine() {
         setDirBiscuitCrumbs(tmpCrumbs);
         return '';
       }
-
       if (
         directoryStructure.get(dirBiscuitCrumbs[dirBiscuitCrumbs.length - 1]).includes(attemptedDir)
       ) {
@@ -45,6 +44,10 @@ function CommandLine() {
         return '';
       }
       return "Error: No directory called '" + attemptedDir + "'";
+    }
+
+    if (commandParts[0] == 'ls') {
+      return directoryStructure.get(dirBiscuitCrumbs[dirBiscuitCrumbs.length - 1]).join(' ');
     }
 
     if (command == 'help') {
@@ -60,15 +63,15 @@ function CommandLine() {
     let command: string = e.target.value;
 
     let tmpSentCommands = [...sentCommands];
-    tmpSentCommands.push(command);
+    tmpSentCommands.push(promptLine + dirBiscuitCrumbs.join('/') + '$ ' + command);
     setSentCommands(tmpSentCommands);
 
     let response = processCommand(command);
-    if (response) {
-      let tmpResponses = [...responses];
-      tmpResponses.push(response);
-      setResponses(tmpResponses);
-    }
+
+    let tmpResponses = [...responses];
+    tmpResponses.push(response);
+    setResponses(tmpResponses);
+
     setCurrentCommand('');
   };
 
@@ -93,7 +96,7 @@ function CommandLine() {
 
         <div className="terminal-line">
           <label id="prompt" htmlFor={'textarea'}>
-            {promptLine + dirBiscuitCrumbs.join('/') + '$'}
+            {promptLine + dirBiscuitCrumbs.join('/') + '$ '}
           </label>
           <textarea
             id="textarea"

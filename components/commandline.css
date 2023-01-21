@@ -28,7 +28,7 @@
 
 textarea {
   border: none;
-  padding: 0 10px;
+  /* padding: 0 10px; */
   margin: 0;
   display: inline-block;
   background: none;
@@ -42,7 +42,7 @@ textarea {
 
   resize: none;
   width: auto;
-  width: 80%;
+  width: 50%;
 }
 
 .terminal-line * {
