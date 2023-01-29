@@ -6,6 +6,6 @@ directoryStructure.set('Projects', [
   'Training a Neural Network with a Genetic Algorithm.page',
   'Drawing Distributions.page',
 ]);
-directoryStructure.set('About', ['music.page', 'resume.page']);
+directoryStructure.set('About', ['music.page', 'about.page']);
 
 export default directoryStructure;
