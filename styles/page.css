@@ -19,3 +19,31 @@
   color: red;
   transform: scale(1.2);
 }
+
+
+.languages {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* .languages > * {
+  display: block;
+  margin: 100px;
+} */
+
+.language-name-pair {
+  display: block;
+  text-align: center;
+}
+
+.language-display {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.language-display img {
+  height: 50px;
+  width: 50px
+}

@@ -1,6 +1,6 @@
 import { baseURL } from '@/utils/apiConfig';
 import fetchData from '@/utils/fetchData';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const loginMessage = (ip: string) => {
   var currentdate = new Date();
@@ -30,21 +30,10 @@ const loginMessage = (ip: string) => {
   `;
 };
 
-const apiData = fetchData(baseURL + '/api/getClientIpAddress');
-
 const LoginMessage = () => {
-  const ipInfo = apiData.read();
-  const [hydrated, setHydrated] = React.useState(false);
-  React.useEffect(() => {
-    setHydrated(true);
-  }, []);
-  if (!hydrated) {
-    // Returns null on first render, so the client and server match
-    return null;
-  }
   return (
     <div className={'typing-container'}>
-      <p className="typed">{loginMessage(ipInfo.ip)}</p>
+      <p className="typed">{loginMessage("0.0.0.0")}</p>
     </div>
   );
 };
