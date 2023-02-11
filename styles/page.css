@@ -20,7 +20,6 @@
   transform: scale(1.2);
 }
 
-
 .languages {
   display: flex;
   justify-content: space-around;
@@ -45,5 +44,5 @@
 
 .language-display img {
   height: 50px;
-  width: 50px
+  width: 50px;
 }

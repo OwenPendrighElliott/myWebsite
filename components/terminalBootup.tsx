@@ -33,7 +33,7 @@ const loginMessage = (ip: string) => {
 const LoginMessage = () => {
   return (
     <div className={'typing-container'}>
-      <p className="typed">{loginMessage("0.0.0.0")}</p>
+      <p className="typed">{loginMessage('0.0.0.0')}</p>
     </div>
   );
 };
