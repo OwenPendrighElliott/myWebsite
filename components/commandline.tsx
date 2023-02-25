@@ -26,7 +26,7 @@ function CommandLine() {
       setSentCommands([]);
       setResponses([]);
       setCurrentCommand('');
-      return '';
+      return 'clear';
     }
     let commandParts = command.split(' ');
     if (commandParts[0] == 'cd') {
@@ -67,6 +67,7 @@ function CommandLine() {
     setSentCommands(tmpSentCommands);
 
     let response = processCommand(command);
+    if (response == 'clear') return;
 
     let tmpResponses = [...responses];
     tmpResponses.push(response);

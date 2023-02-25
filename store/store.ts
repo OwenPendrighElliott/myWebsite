@@ -1,12 +1,15 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { homepageSlice } from './homepageSlice';
 import { createWrapper } from 'next-redux-wrapper';
+import { homepageSlice } from './homepageSlice';
+import { commandlineSlice } from './commandlineSlice';
 
 const makeStore = () =>
   configureStore({
     reducer: {
       [homepageSlice.name]: homepageSlice.reducer,
+      [commandlineSlice.name]: commandlineSlice.reducer,
     },
+
     devTools: true,
   });
 
