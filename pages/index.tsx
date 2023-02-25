@@ -1,13 +1,19 @@
+import React, { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from '@next/font/google';
 import styles from '@/styles/Home.module.css';
-
+import { useDispatch, useSelector } from 'react-redux';
 import CommandLine from '../components/commandline';
+import { Switch } from 'antd';
+import HomePage from '@/components/HomePage';
+import { selectIsCLI, setIsCLI } from '@/store/homepageSlice';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
+  const isCLI = useSelector(selectIsCLI);
+  const dispatch = useDispatch();
   return (
     <>
       <Head>
@@ -18,7 +24,15 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div>
-          <CommandLine />
+          <div className={'render-controls'}>
+            <Switch
+              onChange={(v: boolean) => dispatch(setIsCLI(v))}
+              checkedChildren="CLI"
+              unCheckedChildren="GUI"
+              checked={isCLI as boolean}
+            />
+          </div>
+          {isCLI ? <CommandLine /> : <HomePage />}
         </div>
       </main>
     </>

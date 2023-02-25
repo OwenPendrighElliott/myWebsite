@@ -1,0 +1,34 @@
+.home-page {
+  font-family: 'Red Hat Mono', monospace;
+  color: white;
+  margin: 20px;
+}
+
+.page-squares {
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  width: 75%;
+  max-width: 600px;
+  grid-template-columns: repeat(2, [col-start] 1fr);
+  grid-gap: 15px;
+}
+
+.page-square-child {
+  border: grey 3px solid;
+  border-radius: 10px;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.page-square-child:hover {
+  background-color: rgb(43, 46, 85);
+  transform: scale(1.05);
+}
+
+.page-squares:hover .page-square-child:not(:hover) {
+  filter: blur(3px);
+}

@@ -22,3 +22,9 @@ body {
 .multiline {
   white-space: pre-wrap;
 }
+
+.render-controls {
+  text-align: right;
+  padding-top: 5px;
+  padding-right: 5px;
+}

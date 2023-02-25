@@ -13,7 +13,7 @@ const LogoAndLanguageDisplay = ({ languagesAndLogos }: LogoAndLanguageDisplayPro
         {languagesAndLogos.map((lal: string[], i: number) => {
           return (
             <div key={i.toString()} className={'language-name-pair'}>
-              <Image src={lal[1]} alt={lal[0] + ' logo'} />
+              <img src={lal[1]} alt={lal[0] + ' logo'} />
               <div>{lal[0]}</div>
             </div>
           );
@@ -37,7 +37,7 @@ const About = () => {
       {/* <Space direction="vertical" size="middle" style={{ display: 'flex' }}> */}
       <h1>About</h1>
       {/* <Avatar size={64} shape="square" src="https://avatars.githubusercontent.com/u/41710527?v=4" /> */}
-      <p>
+      <p className={'narrow-center-text'}>
         Hi I&apos;m Owen! I am passionate about all things software engineering and AI! I have
         experience working in analytics, data engineering and artificial intelligence across
         government, banking and defence. I graduated from ANU with a double degree in IT and Music
