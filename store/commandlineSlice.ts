@@ -4,14 +4,16 @@ import { AppState } from './store';
 
 export interface CommandLineState {
   commands: string[];
+  pureCommands: string[];
   responses: string[];
   dirBiscuitCrumbs: string[];
 }
 
 const initialState: CommandLineState = {
   commands: [],
+  pureCommands: [],
   responses: [],
-  dirBiscuitCrumbs: [],
+  dirBiscuitCrumbs: [''],
 };
 
 export const commandlineSlice = createSlice({
@@ -20,6 +22,9 @@ export const commandlineSlice = createSlice({
   reducers: {
     setCommands(state, action) {
       state.commands = action.payload;
+    },
+    setPureCommands(state, action) {
+      state.pureCommands = action.payload;
     },
     setResponses(state, action) {
       state.responses = action.payload;
@@ -35,6 +40,7 @@ export const commandlineSlice = createSlice({
       return {
         ...state,
         ...action.payload.commands,
+        ...action.payload.pureCommands,
         ...action.payload.responses,
         ...action.payload.dirBiscuitCrumbs,
       };
@@ -43,10 +49,12 @@ export const commandlineSlice = createSlice({
 });
 
 export const { setCommands } = commandlineSlice.actions;
+export const { setPureCommands } = commandlineSlice.actions;
 export const { setResponses } = commandlineSlice.actions;
 export const { setDirBiscuitCrumbs } = commandlineSlice.actions;
 
 export const selectCommands = (state: AppState) => state.cli.commands;
+export const selectPureCommands = (state: AppState) => state.cli.pureCommands;
 export const selectResponses = (state: AppState) => state.cli.responses;
 export const selectBiscuitCrumbs = (state: AppState) => state.cli.dirBiscuitCrumbs;
 
