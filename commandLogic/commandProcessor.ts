@@ -1,3 +1,4 @@
+import txtMap from '@/txtFiles/txtMapping';
 import directoryStructure, { lnkMap } from './folderStructure';
 import helpStr from './help';
 
@@ -53,18 +54,23 @@ function processCommand({
   }
 
   if (commandParts[0] == 'open') {
+    let dirContents = directoryStructure
+      .get(dirBiscuitCrumbs[dirBiscuitCrumbs.length - 1])
+      .join(' ');
+
     if (commandParts[1].endsWith('.lnk')) {
       let lnk = lnkMap.get(commandParts[1]);
-
-      if (
-        lnk &&
-        directoryStructure
-          .get(dirBiscuitCrumbs[dirBiscuitCrumbs.length - 1])
-          .join(' ')
-          .includes(commandParts[1])
-      ) {
+      if (lnk && dirContents.includes(commandParts[1])) {
         window.open(lnk, '_blank');
         return `${commandParts[1]} opened in a new tab.`;
+      } else {
+        return `${commandParts[1]} does not exist.`;
+      }
+    }
+    if (commandParts[1].endsWith('.txt')) {
+      let txt = txtMap.get(commandParts[1]);
+      if (txt && dirContents.includes(commandParts[1])) {
+        return txt;
       } else {
         return `${commandParts[1]} does not exist.`;
       }
