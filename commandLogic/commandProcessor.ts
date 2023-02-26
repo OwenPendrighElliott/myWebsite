@@ -9,7 +9,6 @@ interface commandData {
   updateResponses: (v: string[]) => void;
   updateBiscuitCrumbs: (v: string[]) => void;
   updateCurrent: (v: string) => void;
-  updatePureCommands: (v: string[]) => void;
 }
 
 function processCommand({
@@ -19,13 +18,11 @@ function processCommand({
   updateResponses,
   updateCurrent,
   updateBiscuitCrumbs,
-  updatePureCommands,
 }: commandData): string {
   if (command == 'clear') {
     updateCommands([]);
     updateResponses([]);
     updateCurrent('');
-    updatePureCommands([]);
     return 'clear';
   }
   let commandParts = command.split(' ');

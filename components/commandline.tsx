@@ -68,7 +68,6 @@ const CommandLine = () => {
       updateResponses: updateResponses,
       updateBiscuitCrumbs: updateBiscuitCrumbs,
       updateCurrent: setCurrentCommand,
-      updatePureCommands: updatePureCommands,
     });
     if (response == 'clear') return;
 
@@ -90,7 +89,7 @@ const CommandLine = () => {
 
     // if down arrow then cycle commands down
     if (e.keyCode == 40) {
-      if (commandIndex < commands.length) {
+      if (commandIndex < pureCommands.length) {
         setCurrentCommand(pureCommands[commandIndex]);
         setCommandIndex(commandIndex + 1);
       }
