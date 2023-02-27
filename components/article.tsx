@@ -1,0 +1,50 @@
+interface ArticleElement {
+  type: string;
+  content: string;
+}
+
+function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
+  let body: JSX.Element[] = [];
+  for (let i = 0; i < bodyElements.length; i++) {
+    let el = bodyElements[i];
+    switch (el.type) {
+      case 'text':
+        body.push(<p className="article-para">{el.content}</p>);
+        continue;
+      case 'code':
+        body.push(<p className="article-code">{el.content}</p>);
+        continue;
+      case 'math':
+        body.push(<p className="article-math">{el.content}</p>);
+        continue;
+      case 'image':
+        body.push(<img src={el.content} alt={el.content}></img>);
+        continue;
+    }
+  }
+  return body;
+}
+
+type ArticleProps = {
+  title: string;
+  contentURL: string;
+};
+
+const Article = ({ title, contentURL }: ArticleProps) => {
+  let bodyElements: ArticleElement[] = [
+    { type: 'text', content: 'Hello! here is the first paragraph of my article' },
+    { type: 'text', content: 'Here is another' },
+    { type: 'code', content: `int main() { cout << "Hello, world!" << endl; return 0;}` },
+    { type: 'math', content: `x = 3 * 4` },
+  ]; // replace with API call to get content
+
+  const body: JSX.Element[] = constructArticleBody(bodyElements);
+  return (
+    <div className="article">
+      <h1>{title}</h1>
+      {body}
+    </div>
+  );
+};
+
+export default Article;
