@@ -1,6 +1,12 @@
+import React from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
 interface ArticleElement {
   type: string;
   content: string;
+  alt?: string;
+  language?: string;
 }
 
 function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
@@ -12,13 +18,17 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
         body.push(<p className="article-para">{el.content}</p>);
         continue;
       case 'code':
-        body.push(<p className="article-code">{el.content}</p>);
+        body.push(
+          <SyntaxHighlighter language={el.language} style={a11yDark}>
+            {el.content}
+          </SyntaxHighlighter>,
+        );
         continue;
       case 'math':
         body.push(<p className="article-math">{el.content}</p>);
         continue;
       case 'image':
-        body.push(<img src={el.content} alt={el.content}></img>);
+        body.push(<img src={el.content} alt={el.alt}></img>);
         continue;
     }
   }
@@ -34,7 +44,11 @@ const Article = ({ title, contentURL }: ArticleProps) => {
   let bodyElements: ArticleElement[] = [
     { type: 'text', content: 'Hello! here is the first paragraph of my article' },
     { type: 'text', content: 'Here is another' },
-    { type: 'code', content: `int main() { cout << "Hello, world!" << endl; return 0;}` },
+    {
+      type: 'code',
+      content: `int main() { cout << "Hello, world!" << endl; return 0;}`,
+      language: 'cpp',
+    },
     { type: 'math', content: `x = 3 * 4` },
   ]; // replace with API call to get content
 
