@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import LoginMessage from './terminalBootup';
-import directoryStructure from '@/commandLogic/folderStructure';
-import helpStr from '@/commandLogic/help';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectBiscuitCrumbs,
