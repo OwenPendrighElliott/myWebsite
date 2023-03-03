@@ -28,7 +28,12 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
         body.push(<p className="article-math">{el.content}</p>);
         continue;
       case 'image':
-        body.push(<img src={el.content} alt={el.alt}></img>);
+        body.push(
+          <div className="article-image">
+            <img src={el.content} alt={el.alt}></img>
+            <p>{el.alt}</p>
+          </div>,
+        );
         continue;
     }
   }
@@ -43,6 +48,12 @@ type ArticleProps = {
 const Article = ({ title, contentURL }: ArticleProps) => {
   let bodyElements: ArticleElement[] = [
     { type: 'text', content: 'Hello! here is the first paragraph of my article' },
+    {
+      type: 'image',
+      content:
+        'https://storage.googleapis.com/download.tensorflow.org/example_images/YellowLabradorLooking_new.jpg',
+      alt: 'A photo of a dog.',
+    },
     { type: 'text', content: 'Here is another' },
     {
       type: 'code',
