@@ -4,8 +4,10 @@ import React from 'react';
 const Articles = () => {
   return (
     <div className="page">
-      Links will go here
-      <Article title="Test article" contentURL="www.test.com"></Article>
+      <Article
+        title="Test article"
+        contentURL="https://owen-elliott-website-articles.s3.ap-southeast-2.amazonaws.com/test-article.json"
+      ></Article>
     </div>
   );
 };

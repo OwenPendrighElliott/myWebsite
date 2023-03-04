@@ -11,6 +11,7 @@ import { selectIsCLI, setIsCLI } from '@/store/homepageSlice';
 export default function Home() {
   const isCLI = useSelector(selectIsCLI);
   const dispatch = useDispatch();
+
   return (
     <>
       <Head>

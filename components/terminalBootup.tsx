@@ -1,5 +1,3 @@
-import { baseURL } from '@/utils/apiConfig';
-import fetchData from '@/utils/fetchData';
 import React, { useState, useEffect } from 'react';
 
 const loginMessage = (ip: string) => {

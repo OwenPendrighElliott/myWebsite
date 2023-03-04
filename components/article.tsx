@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { trackPromise } from 'react-promise-tracker';
+import LoadingIndicator from './loading';
 
 interface ArticleElement {
   type: string;
@@ -46,28 +48,37 @@ type ArticleProps = {
 };
 
 const Article = ({ title, contentURL }: ArticleProps) => {
-  let bodyElements: ArticleElement[] = [
-    { type: 'text', content: 'Hello! here is the first paragraph of my article' },
-    {
-      type: 'image',
-      content:
-        'https://storage.googleapis.com/download.tensorflow.org/example_images/YellowLabradorLooking_new.jpg',
-      alt: 'A photo of a dog.',
-    },
-    { type: 'text', content: 'Here is another' },
-    {
-      type: 'code',
-      content: `int main() { cout << "Hello, world!" << endl; return 0;}`,
-      language: 'cpp',
-    },
-    { type: 'math', content: `x = 3 * 4` },
-  ]; // replace with API call to get content
+  const [articleData, setArticleData] = useState<ArticleElement[]>([]);
 
-  const body: JSX.Element[] = constructArticleBody(bodyElements);
+  const onLoadArticle = () => {
+    trackPromise(
+      fetch(contentURL, {
+        mode: 'cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      })
+        .then((res) => {
+          console.log(res);
+          return res.json();
+        })
+        .then((res) => {
+          console.log(res);
+          setArticleData(res);
+          return res;
+        }),
+    );
+  };
+
+  useEffect(() => {
+    onLoadArticle();
+  }, []);
+
   return (
     <div className="article">
+      <LoadingIndicator />
       <h1>{title}</h1>
-      {body}
+      {constructArticleBody(articleData)}
     </div>
   );
 };
