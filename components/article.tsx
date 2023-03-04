@@ -19,6 +19,9 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
       case 'text':
         body.push(<p className="article-para">{el.content}</p>);
         continue;
+      case 'mono':
+        body.push(<p className="article-mono">{el.content}</p>);
+        continue;
       case 'code':
         body.push(
           <SyntaxHighlighter language={el.language} style={a11yDark}>

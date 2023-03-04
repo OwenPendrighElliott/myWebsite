@@ -5,24 +5,27 @@
   font-family: 'Roboto', sans-serif;
   background-color: #202124;
   color: #bdc1c5;
+  padding-left: 20vw;
+  padding-right: 20vw;
 }
 
 .article h1 {
   color: white;
-  margin-bottom: 20px;
+  margin-bottom: 3vh;
 }
 
 .article .article-para {
   font-size: large;
-  padding-bottom: 5px;
+  margin-bottom: 1vh;
 }
 
-.article .article-code {
+.article .article-mono {
   font-family: 'Red Hat Mono', monospace;
-  /* border: 2px red solid; */
+  white-space: pre-wrap;
   background-color: rgb(60, 60, 60);
   border-radius: 10px;
   padding: 10px;
+  margin-bottom: 1vh;
 }
 
 .article .article-math {
