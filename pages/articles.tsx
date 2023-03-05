@@ -1,17 +1,45 @@
-import Article from '@/components/article';
+import articleData, { ArticleMetadata } from '@/utils/articleData';
+import Link from 'next/link';
 import React from 'react';
 
+type ArticleDisplayProps = {
+  title: string;
+  displayImageURL: string;
+  summary: string;
+};
+const ArticleDisplay = ({ title, displayImageURL, summary }: ArticleDisplayProps) => {
+  return (
+    <div className={'article-list-element'}>
+      <div>
+        <h3>{title}</h3>
+        <div className="image-summary-pair">
+          <p>
+            <img src={displayImageURL} alt={title} />
+            {summary}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Articles = () => {
+  const articleMetadatas: ArticleMetadata[] = Array.from(articleData.values());
+
   return (
     <div className="page">
-      {/* <Article
-        title="Deep Dreams in PyTorch"
-        contentURL="https://d3kjqeh110p10g.cloudfront.net/2020-09-16-deep-dreams-in-pytorch/2020-09-16-deep-dreams-in-pytorch.json"
-      /> */}
-      <Article
-        title="ConvNet Autoencoder for Scan Cleaning"
-        contentURL="https://d3kjqeh110p10g.cloudfront.net/2021-01-18-ConvNet-Autoencoder-for-Scan-Cleaning/2021-01-18-ConvNet-Autoencoder-for-Scan-Cleaning.json"
-      />
+      <h1>Articles</h1>
+      <div className="article-list">
+        {articleMetadatas.map((metadata: ArticleMetadata, i: number) => (
+          <Link key={i.toString()} style={{ textDecoration: 'none', color: 'white' }} href={metadata.route}>
+            <ArticleDisplay
+              title={metadata.title}
+              displayImageURL={metadata.displayImageURL}
+              summary={metadata.summary}
+            />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

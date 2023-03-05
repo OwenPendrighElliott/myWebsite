@@ -5,8 +5,21 @@
   font-family: 'Roboto', sans-serif;
   background-color: #202124;
   color: #bdc1c5;
-  padding-left: 20vw;
-  padding-right: 20vw;
+  /* padding-left: 20vw;
+  padding-right: 20vw; */
+}
+
+@media screen and (orientation: portrait) {
+  .article {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+}
+@media screen and (orientation: landscape) {
+  .article {
+    padding-left: 20vw;
+    padding-right: 20vw;
+  }
 }
 
 .article h1 {
@@ -14,22 +27,23 @@
   margin-bottom: 3vh;
 }
 
-.article .article-para {
+.article-para {
   font-size: large;
   line-height: 150%;
   margin-bottom: 1vh;
 }
 
-.article .article-mono {
+.article-mono {
   font-family: 'Red Hat Mono', monospace;
-  white-space: pre-wrap;
+  white-space: pre;
   background-color: rgb(60, 60, 60);
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 1vh;
+  overflow-x: auto;
 }
 
-.article .article-math {
+.article-math {
   font-size: larger;
   font-family: 'Times New Roman', Times, serif;
   font-style: italic;
@@ -40,12 +54,72 @@
   word-spacing: normal;
 }
 
-.article .article-subtitle {
+.article-subtitle {
   margin-top: 3vh;
   margin-bottom: 1vh;
 }
 
-.article .article-list {
+.article-list {
   line-height: 150%;
   margin-bottom: 1vh;
+}
+
+.article-image {
+  padding-bottom: 2vh;
+}
+
+.article-image img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 500px;
+  max-width: 60vw;
+}
+
+.article-image p {
+  padding-top: 0.5vh;
+  text-align: center;
+  font-style: italic;
+  font-size: small;
+}
+
+.article-list {
+  padding-top: 100px;
+}
+
+.article-list-element {
+  margin-left: 20px;
+  max-width: 1000px;
+  margin-bottom: 2vh;
+  transition: 0.5s;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.article-list-element:hover {
+  transition: 0.5s ease-out;
+  transform: scale(1.05);
+  background-color: rgb(43, 46, 85);
+}
+
+.article-list-element:hover .article-list.article-list-element:not(:hover) {
+  filter: blur(1px);
+}
+
+.article-list-element img {
+  width: 5vw;
+  height: 5vw;
+  min-height: 80px;
+  min-width: 80px;
+  object-fit: cover;
+  float: left;
+  margin-right: 10px;
+  clear: both;
+}
+
+.article-list-element p {
+  margin-left: 0px;
+  overflow: auto;
+  display: block;
 }
