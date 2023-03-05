@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import React, { useEffect, useState, Suspense } from 'react';
 import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+const SyntaxHighlighter = React.lazy(() =>
+  import('react-syntax-highlighter').then((module) => ({ default: module.PrismAsyncLight })),
+);
 import { trackPromise } from 'react-promise-tracker';
-import LoadingIndicator from './loading';
+import LoadingIndicator from './loadingPromise';
+import LoadingPromise from './loadingPromise';
 
 interface ArticleElement {
   type: string;
   content: string;
   alt?: string;
   language?: string;
+  elements?: string[];
 }
 
 function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
@@ -19,14 +23,19 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
       case 'text':
         body.push(<p className="article-para">{el.content}</p>);
         continue;
+      case 'subtitle':
+        body.push(<h3 className="article-subtitle">{el.content}</h3>);
+        continue;
       case 'mono':
         body.push(<p className="article-mono">{el.content}</p>);
         continue;
       case 'code':
         body.push(
-          <SyntaxHighlighter language={el.language} style={a11yDark}>
-            {el.content}
-          </SyntaxHighlighter>,
+          <div className="article-code-block">
+            <SyntaxHighlighter language={el.language} style={a11yDark}>
+              {el.content}
+            </SyntaxHighlighter>
+          </div>,
         );
         continue;
       case 'math':
@@ -37,6 +46,17 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
           <div className="article-image">
             <img src={el.content} alt={el.alt}></img>
             <p>{el.alt}</p>
+          </div>,
+        );
+        continue;
+      case 'list':
+        body.push(
+          <div className="article-list">
+            {el.elements ? (
+              el.elements.map((el: string, i: number) => <li key={i.toString()}>{el}</li>)
+            ) : (
+              <></>
+            )}
           </div>,
         );
         continue;
@@ -79,9 +99,11 @@ const Article = ({ title, contentURL }: ArticleProps) => {
 
   return (
     <div className="article">
-      <LoadingIndicator />
-      <h1>{title}</h1>
-      {constructArticleBody(articleData)}
+      <Suspense fallback={<LoadingIndicator />}>
+        <LoadingPromise />
+        <h1>{title}</h1>
+        {constructArticleBody(articleData)}
+      </Suspense>
     </div>
   );
 };

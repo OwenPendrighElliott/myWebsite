@@ -16,6 +16,7 @@
 
 .article .article-para {
   font-size: large;
+  line-height: 150%;
   margin-bottom: 1vh;
 }
 
@@ -37,4 +38,14 @@
   text-align: center;
   width: 100%;
   word-spacing: normal;
+}
+
+.article .article-subtitle {
+  margin-top: 3vh;
+  margin-bottom: 1vh;
+}
+
+.article .article-list {
+  line-height: 150%;
+  margin-bottom: 1vh;
 }
