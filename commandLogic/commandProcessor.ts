@@ -1,5 +1,5 @@
 import txtMap from '@/txtFiles/txtMapping';
-import directoryStructure, { lnkMap } from './folderStructure';
+import directoryStructure, { lnkMap, pageMap } from './mockFileSystem';
 import helpStr from './help';
 
 interface commandData {
@@ -47,7 +47,7 @@ function processCommand({
   }
 
   if (commandParts[0] == 'ls') {
-    return directoryStructure.get(dirBiscuitCrumbs[dirBiscuitCrumbs.length - 1]).join(' ');
+    return directoryStructure.get(dirBiscuitCrumbs[dirBiscuitCrumbs.length - 1]).join('  ');
   }
 
   if (commandParts[0] == 'open') {
@@ -74,11 +74,27 @@ function processCommand({
     }
   }
 
+  if (commandParts[0] == 'serve') {
+    let dirContents = directoryStructure
+      .get(dirBiscuitCrumbs[dirBiscuitCrumbs.length - 1])
+      .join(' ');
+
+    if (commandParts[1].endsWith('.page')) {
+      let page = pageMap.get(commandParts[1]);
+      if (page && dirContents.includes(commandParts[1])) {
+        window.open(page, '_blank');
+        return `${commandParts[1]} opened in a new tab.`;
+      } else {
+        return `${commandParts[1]} does not exist.`;
+      }
+    }
+  }
+
   if (command == 'help') {
     return helpStr;
   }
 
-  return 'Executed ' + command;
+  return "Error: '" + command + "' is not a known command.";
 }
 
 export default processCommand;
