@@ -14,8 +14,18 @@
   font-family: 'Red Hat Mono', monospace;
   color: #39ff14;
   background-color: black;
-  font-size: 16px;
   min-height: 100%;
+}
+
+@media screen and (orientation: portrait) {
+  .terminal {
+    font-size: 10px;
+  }
+}
+@media screen and (orientation: landscape) {
+  .terminal {
+    font-size: 16px;
+  }
 }
 
 .terminal textarea:focus input:focus {
@@ -45,14 +55,22 @@ textarea {
   font-family: 'Red Hat Mono', monospace;
   color: #39ff14;
   background-color: black;
-  font-size: 16px;
-
   word-wrap: break-word;
   word-break: break-all;
-
   resize: none;
   width: auto;
   width: 50%;
+}
+
+@media screen and (orientation: portrait) {
+  textarea {
+    font-size: 10px;
+  }
+}
+@media screen and (orientation: landscape) {
+  textarea {
+    font-size: 16px;
+  }
 }
 
 .terminal-line * {

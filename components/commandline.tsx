@@ -123,6 +123,8 @@ const CommandLine = () => {
             onChange={(e: any) => setCurrentCommand(e.target.value)}
             onKeyDown={specialKeyActions}
             rows={8}
+            autoCapitalize="off"
+            autoCorrect="off"
           />
         </div>
       </div>

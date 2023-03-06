@@ -8,6 +8,17 @@ export interface ArticleMetadata {
 
 const articleData = new Map<string, ArticleMetadata>();
 
+articleData.set('training-a-neural-network-with-a-genetic-algorithm', {
+  title: 'Training a Neural Network with a Genetic Algorithm',
+  route: 'articles/training-a-neural-network-with-a-genetic-algorithm',
+  contentURL:
+    'https://d3kjqeh110p10g.cloudfront.net/2021-05-01-training-a-neural-network-with-a-genetic-algorithm/2021-05-01-training-a-neural-network-with-a-genetic-algorithm.json',
+  displayImageURL:
+    'https://d3kjqeh110p10g.cloudfront.net/2021-05-01-training-a-neural-network-with-a-genetic-algorithm/2021-05-01-training-a-neural-network-with-a-genetic-algorithm-architecture.png',
+  summary:
+    'Training a neural network to balance a pole on a cart using a genetic algorithm instead of backpropagation!',
+});
+
 articleData.set('deep-dreams-in-pytorch', {
   title: 'Deep Dreams in PyTorch',
   route: 'articles/deep-dreams-in-pytorch',

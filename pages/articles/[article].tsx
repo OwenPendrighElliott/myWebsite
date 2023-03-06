@@ -1,9 +1,9 @@
 import Article from '@/components/article';
 import articleData from '@/utils/articleData';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetStaticPaths } from 'next';
 import React from 'react';
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getStaticProps: GetServerSideProps = async (ctx) => {
   const article = ctx.params?.article as string;
   const articleMetadata = articleData.get(article);
 
@@ -17,6 +17,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       title: articleMetadata.title,
       contentURL: articleMetadata.contentURL,
     },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths<{ article: string }> = async () => {
+  return {
+    paths: [], //indicates that no page needs be created at build time
+    fallback: 'blocking', //indicates the type of fallback
   };
 };
 
