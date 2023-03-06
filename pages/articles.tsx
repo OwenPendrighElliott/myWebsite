@@ -7,6 +7,7 @@ type ArticleDisplayProps = {
   displayImageURL: string;
   summary: string;
 };
+
 const ArticleDisplay = ({ title, displayImageURL, summary }: ArticleDisplayProps) => {
   return (
     <div className={'article-list-element'}>
@@ -19,6 +20,7 @@ const ArticleDisplay = ({ title, displayImageURL, summary }: ArticleDisplayProps
           </p>
         </div>
       </div>
+      <hr></hr>
     </div>
   );
 };
@@ -28,10 +30,14 @@ const Articles = () => {
 
   return (
     <div className="page">
-      <h1>Articles</h1>
+      <h1 className="articles-title">Articles</h1>
       <div className="article-list">
         {articleMetadatas.map((metadata: ArticleMetadata, i: number) => (
-          <Link key={i.toString()} style={{ textDecoration: 'none', color: 'white' }} href={metadata.route}>
+          <Link
+            key={i.toString()}
+            style={{ textDecoration: 'none', color: 'white' }}
+            href={metadata.route}
+          >
             <ArticleDisplay
               title={metadata.title}
               displayImageURL={metadata.displayImageURL}
