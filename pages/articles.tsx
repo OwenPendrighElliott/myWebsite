@@ -20,7 +20,6 @@ const ArticleDisplay = ({ title, displayImageURL, summary }: ArticleDisplayProps
           </p>
         </div>
       </div>
-      <hr></hr>
     </div>
   );
 };
@@ -43,6 +42,7 @@ const Articles = () => {
               displayImageURL={metadata.displayImageURL}
               summary={metadata.summary}
             />
+            <hr></hr>
           </Link>
         ))}
       </div>

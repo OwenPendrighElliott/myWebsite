@@ -32,8 +32,8 @@
   background-color: rgb(43, 46, 85);
 }
 
-.article-list-element hr {
-  margin-top: 2vh;
+.article-list hr {
+  margin-top: 1vh;
   margin-bottom: 1vh;
 }
 

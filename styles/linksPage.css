@@ -1,0 +1,51 @@
+.links-title {
+  margin-bottom: 5vh;
+}
+
+.links {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.links a {
+  text-decoration: none;
+}
+
+.links h2 {
+  text-decoration: underline;
+}
+
+.link {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  transition: 0.5s;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+@media screen and (orientation: portrait) {
+  .link {
+    max-width: 1000px;
+  }
+}
+@media screen and (orientation: landscape) {
+  .link {
+    max-width: 1000px;
+  }
+}
+
+.link:hover {
+  transition: 0.5s ease-out;
+  transform: scale(1.05);
+  background-color: rgb(43, 46, 85);
+}
+
+.links hr {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
