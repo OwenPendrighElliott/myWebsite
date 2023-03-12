@@ -1,15 +1,23 @@
 .home-page {
-  font-family: 'Red Hat Mono', monospace;
+  font-family: 'Roboto', sans-serif;
   color: white;
   margin: 20px;
+}
+
+.home-title {
+  margin-bottom: 1vh;
+}
+
+.home-strap-line {
+  margin-bottom: 3vh;
 }
 
 .page-squares {
   margin-left: auto;
   margin-right: auto;
   display: grid;
-  width: 75%;
-  max-width: 600px;
+  width: 85%;
+  /* max-width: 600px; */
   grid-template-columns: repeat(2, [col-start] 1fr);
   grid-gap: 15px;
 }
@@ -17,18 +25,21 @@
 .page-square-child {
   border: grey 3px solid;
   border-radius: 10px;
-  aspect-ratio: 1/1;
+  aspect-ratio: 2/1;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: large;
   transition: 0.2s;
 }
 
-.page-square-child:hover {
-  background-color: rgb(43, 46, 85);
-  transform: scale(1.05);
-}
+@media (hover: hover) {
+  .page-square-child:hover {
+    background-color: rgb(43, 46, 85);
+    transform: scale(1.05);
+  }
 
-.page-squares:hover .page-square-child:not(:hover) {
-  filter: blur(3px);
+  .page-squares:hover .page-square-child:not(:hover) {
+    filter: blur(2px);
+  }
 }
