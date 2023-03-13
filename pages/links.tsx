@@ -9,7 +9,7 @@ const LinksToOtherSites = () => {
     <div className="page">
       <h1 className="links-title">Links</h1>
       <div className="links">
-        <a target="_blank" href={'https://github.com/OwenPendrighElliott/'}>
+        <a target="_blank" rel="noreferrer" href={'https://github.com/OwenPendrighElliott/'}>
           <div className="link">
             <Image
               width={100}
@@ -27,7 +27,7 @@ const LinksToOtherSites = () => {
           </div>
         </a>
         <hr></hr>
-        <a target="_blank" href={'https://www.linkedin.com/in/owen-elliott-345254166/'}>
+        <a target="_blank" rel="noreferrer" href={'https://www.linkedin.com/in/owen-elliott-345254166/'}>
           <div className="link">
             <Image
               width={100}
