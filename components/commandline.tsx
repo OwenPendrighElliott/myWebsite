@@ -49,7 +49,6 @@ const CommandLine = () => {
   }
 
   const onFormSubmit = (e: any) => {
-    console.log(e.target.value);
     e.preventDefault();
     let command: string = e.target.value;
 

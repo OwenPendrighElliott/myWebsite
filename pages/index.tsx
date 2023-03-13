@@ -7,6 +7,7 @@ import CommandLine from '../components/commandline';
 import { Switch } from 'antd';
 import HomePage from '@/components/HomePage';
 import { selectIsCLI, setIsCLI } from '@/store/homepageSlice';
+import AppBar from '@/components/appBar';
 
 export default function Home() {
   const isCLI = useSelector(selectIsCLI);
@@ -22,6 +23,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div>
+
           <div className={'render-controls'}>
             <Switch
               onChange={(v: boolean) => dispatch(setIsCLI(v))}

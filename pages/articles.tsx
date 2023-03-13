@@ -42,7 +42,6 @@ const Articles = () => {
               displayImageURL={metadata.displayImageURL}
               summary={metadata.summary}
             />
-            <hr></hr>
           </Link>
         ))}
       </div>

@@ -24,7 +24,10 @@ body {
 }
 
 .render-controls {
+  position: absolute;
   text-align: right;
+  top: 0px;
+  right: 0px;
   padding-top: 5px;
   padding-right: 5px;
 }

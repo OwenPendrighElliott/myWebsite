@@ -9,11 +9,9 @@ function fetchData(url: string, onResolve: any) {
       },
     })
       .then((res) => {
-        // console.log(res);
         return res.json();
       })
       .then((res) => {
-        console.log('Fetched: ', res);
         onResolve(res);
         return res;
       }),
