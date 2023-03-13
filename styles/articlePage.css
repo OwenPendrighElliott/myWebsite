@@ -13,6 +13,7 @@
   background-color: rgba(0, 0, 0, 0);
   padding: 5px;
   border-radius: 5px;
+  margin-bottom: 1vh;
 }
 
 @media screen and (orientation: portrait) {
@@ -30,11 +31,6 @@
   transition: 0.5s ease-out;
   transform: scale(1.05);
   background-color: rgb(43, 46, 85);
-}
-
-.article-list hr {
-  margin-top: 1vh;
-  margin-bottom: 1vh;
 }
 
 .article-list-element img {

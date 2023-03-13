@@ -1,0 +1,38 @@
+.app-bar div {
+  display: flex;
+  flex-direction: row;
+  /* gap: 1vw; */
+  font-family: 'Roboto', sans-serif;
+  color: white;
+}
+
+.app-bar-element {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 3px;
+  transition: 0.3s ease;
+}
+@media (hover: hover) {
+  .app-bar-element:hover {
+    background-color: rgb(43, 46, 85);
+  }
+}
+
+.app-bar-hide {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.7s ease;
+}
+
+.app-bar-show {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.7s ease;
+  background-color: rgb(7, 20, 32);
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+.app-bar-article {
+  background-color: #202124;
+}

@@ -10,6 +10,7 @@
     "format": "npx prettier --write ."
   },
   "dependencies": {
+    "@ant-design/icons": "^5.0.1",
     "@next/font": "13.1.2",
     "@reduxjs/toolkit": "^1.9.3",
     "@types/node": "18.11.18",

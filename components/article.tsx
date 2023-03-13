@@ -89,11 +89,9 @@ const Article = ({ title, contentURL }: ArticleProps) => {
         },
       })
         .then((res) => {
-          console.log(res);
           return res.json();
         })
         .then((res) => {
-          console.log(res);
           setArticleData(res);
           return res;
         }),
