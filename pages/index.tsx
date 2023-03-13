@@ -23,7 +23,6 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div>
-
           <div className={'render-controls'}>
             <Switch
               onChange={(v: boolean) => dispatch(setIsCLI(v))}

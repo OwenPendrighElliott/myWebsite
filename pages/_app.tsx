@@ -17,7 +17,7 @@ import { useRouter } from 'next/router';
 
 function App({ Component, pageProps }: AppProps) {
   const isCLI = useSelector(selectIsCLI);
-  const router = useRouter()
+  const router = useRouter();
   return (
     <>
       <NextNProgress />

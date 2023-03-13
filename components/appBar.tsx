@@ -1,27 +1,37 @@
-import { CodeOutlined, CustomerServiceOutlined, FileTextOutlined, HomeOutlined, LinkOutlined } from '@ant-design/icons';
+import {
+  CodeOutlined,
+  CustomerServiceOutlined,
+  FileTextOutlined,
+  HomeOutlined,
+  LinkOutlined,
+} from '@ant-design/icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
 type AppBarProps = {
-    hidden: boolean;
-}
+  hidden: boolean;
+};
 
 const AppBar = ({ hidden }: AppBarProps) => {
-    const router = useRouter();
-    const [appBarClass, setAppBarClass] = useState( hidden ? 'app-bar-hide' : 'app-bar-show');
-    
-    useEffect(() => {
-        if (!hidden) {
-            setAppBarClass('app-bar-show')
-        } else {
-            setAppBarClass('app-bar-hide')
-        }
-    }, [hidden])
+  const router = useRouter();
+  const [appBarClass, setAppBarClass] = useState(hidden ? 'app-bar-hide' : 'app-bar-show');
 
-    return (
-        <div className='app-bar'>
-        <div className={`${appBarClass} ${router.pathname=='/articles/[article]' ? 'app-bar-article' : ''} `}>
+  useEffect(() => {
+    if (!hidden) {
+      setAppBarClass('app-bar-show');
+    } else {
+      setAppBarClass('app-bar-hide');
+    }
+  }, [hidden]);
+
+  return (
+    <div className="app-bar">
+      <div
+        className={`${appBarClass} ${
+          router.pathname == '/articles/[article]' ? 'app-bar-article' : ''
+        } `}
+      >
         {/* <CodeOutlined />
         <FileTextOutlined />
         <LinkOutlined />
@@ -53,9 +63,9 @@ const AppBar = ({ hidden }: AppBarProps) => {
             <p>Links</p>
           </div>
         </Link>
+      </div>
     </div>
-    </div>
-    )
-}
+  );
+};
 
 export default AppBar;

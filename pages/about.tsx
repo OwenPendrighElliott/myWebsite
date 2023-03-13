@@ -35,7 +35,7 @@ const About = () => {
   return (
     <div className="page">
       <h1 className="about-title">About</h1>
-      <p className='about-paragraph'>
+      <p className="about-paragraph">
         Hi I&apos;m Owen! I am passionate about all things software engineering and AI! I have
         experience working in analytics, data engineering and artificial intelligence across
         government, banking and defence. I graduated from ANU with a double degree in IT and Music
