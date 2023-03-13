@@ -14,7 +14,7 @@ const LinksToOtherSites = () => {
             <Image
               width={100}
               height={100}
-              src={'/../public/GitHubProfilePic.jpeg'}
+              src={'/GitHubProfilePic.jpeg'}
               alt="GitHub profile picture for Owen Pendrigh Elliott"
             />
             <div>
@@ -36,7 +36,7 @@ const LinksToOtherSites = () => {
             <Image
               width={100}
               height={100}
-              src={'/../public/LinkedInProfilePic.jpeg'}
+              src={'/LinkedInProfilePic.jpeg'}
               alt="LinkedIn profile picture for Owen Pendrigh Elliott"
             />
             <div>
