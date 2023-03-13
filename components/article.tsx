@@ -22,17 +22,29 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
     let el = bodyElements[i];
     switch (el.type) {
       case 'text':
-        body.push(<p className="article-para">{el.content}</p>);
+        body.push(
+          <p key={i.toString()} className="article-para">
+            {el.content}
+          </p>,
+        );
         continue;
       case 'subtitle':
-        body.push(<h3 className="article-subtitle">{el.content}</h3>);
+        body.push(
+          <h3 key={i.toString()} className="article-subtitle">
+            {el.content}
+          </h3>,
+        );
         continue;
       case 'mono':
-        body.push(<p className="article-mono">{el.content}</p>);
+        body.push(
+          <p key={i.toString()} className="article-mono">
+            {el.content}
+          </p>,
+        );
         continue;
       case 'code':
         body.push(
-          <div className="article-code-block">
+          <div key={i.toString()} className="article-code-block">
             <SyntaxHighlighter
               language={el.language}
               style={vscDarkPlus}
@@ -44,19 +56,23 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
         );
         continue;
       case 'math':
-        body.push(<p className="article-math">{el.content}</p>);
+        body.push(
+          <p key={i.toString()} className="article-math">
+            {el.content}
+          </p>,
+        );
         continue;
       case 'image':
         body.push(
-          <div className="article-image">
-            <img src={el.content} alt={el.alt}></img>
+          <div key={i.toString()} className="article-image">
+            <img src={el.content} alt={el.alt} loading="lazy"></img>
             {el.caption ? <p>{el.caption}</p> : <></>}
           </div>,
         );
         continue;
       case 'list':
         body.push(
-          <div className="article-list article-para">
+          <div key={i.toString()} className="article-list article-para">
             <ul>
               {el.elements ? (
                 el.elements.map((el: string, i: number) => <li key={i.toString()}>{el}</li>)
