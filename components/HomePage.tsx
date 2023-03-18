@@ -1,35 +1,28 @@
-import Link from 'next/link';
 import React from 'react';
 
 const HomePage = () => {
   return (
     <div className="home-page">
-      <h1 className="home-title">Owen Elliott</h1>
-      <p className="home-strap-line">Welcome to the Graphical User Interface for my website.</p>
-
-      <div className="page-squares">
-        <Link style={{ textDecoration: 'none', color: 'white' }} href={'/about'}>
-          <div className="page-square-child">
-            <h2>About</h2>
-          </div>
-        </Link>
-        <Link style={{ textDecoration: 'none', color: 'white' }} href={'/articles'}>
-          <div className="page-square-child">
-            <h2>Articles</h2>
-          </div>
-        </Link>
-
-        <Link style={{ textDecoration: 'none', color: 'white' }} href={'/music'}>
-          <div className="page-square-child">
-            <h2>Music</h2>
-          </div>
-        </Link>
-
-        <Link style={{ textDecoration: 'none', color: 'white' }} href={'/links'}>
-          <div className="page-square-child">
-            <h2>Links</h2>
-          </div>
-        </Link>
+      <h1>owenelliott.dev</h1>
+      <div id={'home-page-blurb'} className="hello-world">
+        <p className={'home-paragraph'}>
+          I am a solution architect and software engineer with a passion for solving complex
+          problems using cutting-edge technologies. I currently work at Marqo, a company that builds
+          a tensor search engine that enables fast end to end search of multimodal data at scale.
+        </p>
+        <p className={'home-paragraph'}>
+          On this website, you will find articles I write about various topics related to software
+          development, machine learning, and data science. You will also see some of the programming
+          projects that I work on in my spare time or as part of my professional portfolio.
+        </p>
+        <p className={'home-paragraph'}>
+          In addition to coding, I also enjoy making music. You can check out my music and my band
+          Axiomatic Theory on this site as well!
+        </p>
+        <p className={'home-paragraph'}>
+          Thank you for visiting my website and feel free to contact me if you have any questions or
+          feedback.
+        </p>
       </div>
     </div>
   );

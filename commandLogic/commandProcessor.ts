@@ -28,6 +28,7 @@ function processCommand({
   let commandParts = command.split(' ');
 
   if (commandParts[0] == 'cd') {
+    if (commandParts.length < 2) return 'Please provide a directory';
     let attemptedDir = commandParts[1];
     if (attemptedDir == '..') {
       let tmpCrumbs = [...dirBiscuitCrumbs];
@@ -51,6 +52,7 @@ function processCommand({
   }
 
   if (commandParts[0] == 'open') {
+    if (commandParts.length < 2) return 'Please provide a file';
     let dirContents = directoryStructure
       .get(dirBiscuitCrumbs[dirBiscuitCrumbs.length - 1])
       .join(' ');
@@ -75,6 +77,7 @@ function processCommand({
   }
 
   if (commandParts[0] == 'serve') {
+    if (commandParts.length < 2) return 'Please provide a page';
     let dirContents = directoryStructure
       .get(dirBiscuitCrumbs[dirBiscuitCrumbs.length - 1])
       .join(' ');
@@ -90,8 +93,22 @@ function processCommand({
     }
   }
 
+  if (commandParts[0] == 'useradd') {
+    if (commandParts.length < 2) return 'Please provide a username';
+    if (commandParts[1]) {
+      let username = commandParts[1];
+      localStorage.setItem('username', username);
+      return `You are now ${username}`;
+    }
+  }
+
   if (command == 'help') {
     return helpStr;
+  }
+
+  if (command == 'logout') {
+    window.location.href = 'http://localhost/';
+    return 'Logging you out, goodbye!';
   }
 
   return "Error: '" + command + "' is not a known command.";

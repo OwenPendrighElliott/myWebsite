@@ -1,45 +1,18 @@
 .home-page {
   font-family: 'Roboto', sans-serif;
+  max-width: 800px;
+  margin: auto;
+}
+
+.home-page h1 {
+  margin: 2vh;
   color: white;
-  margin: 20px;
 }
 
-.home-title {
-  margin-bottom: 1vh;
-}
-
-.home-strap-line {
-  margin-bottom: 3vh;
-}
-
-.page-squares {
-  margin-left: auto;
-  margin-right: auto;
-  display: grid;
-  width: 85%;
-  /* max-width: 600px; */
-  grid-template-columns: repeat(2, [col-start] 1fr);
-  grid-gap: 15px;
-}
-
-.page-square-child {
-  border: grey 3px solid;
-  border-radius: 10px;
-  aspect-ratio: 2/1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: large;
-  transition: 0.2s;
-}
-
-@media (hover: hover) {
-  .page-square-child:hover {
-    background-color: rgb(43, 46, 85);
-    transform: scale(1.05);
-  }
-
-  .page-squares:hover .page-square-child:not(:hover) {
-    filter: blur(2px);
-  }
+.home-paragraph {
+  margin: 2vh;
+  margin-bottom: 2vh;
+  color: white;
+  /* Add some transition properties */
+  transition: 0.6s ease-in-out;
 }

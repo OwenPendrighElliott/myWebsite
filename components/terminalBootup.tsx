@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const loginMessage = (ip: string) => {
   var currentdate = new Date();
@@ -12,8 +12,9 @@ const loginMessage = (ip: string) => {
     currentdate.getHours() +
     ':' +
     currentdate.getMinutes();
+  let username = localStorage.getItem('username');
   return `
-  login as: guest
+  logged in as: ${username ? username : 'guest'}
   ###################################################################################################
   #                                    Welcome to My Website!                                       #
   #                              Owen's Server release 1.0.0 (beta)                                 #

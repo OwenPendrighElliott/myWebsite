@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import LoginMessage from './terminalBootup';
+import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectBiscuitCrumbs,
@@ -12,6 +12,8 @@ import {
   setResponses,
 } from '@/store/commandlineSlice';
 import processCommand from '@/commandLogic/commandProcessor';
+
+const LoginMessage = dynamic(() => import('./terminalBootup'), { ssr: false });
 
 let promptLine = 'guest@my-website:~';
 
