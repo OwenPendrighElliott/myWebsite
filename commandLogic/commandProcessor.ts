@@ -11,6 +11,42 @@ interface commandData {
   updateCurrent: (v: string) => void;
 }
 
+export function autoCompleteDir(command: string, dirBiscuitCrumbs: string[]) {
+  // get current directory listing and the last part of the current command
+  let dirListing = directoryStructure.get(dirBiscuitCrumbs[dirBiscuitCrumbs.length - 1]);
+  let s = command.split(' ')[command.split(' ').length - 1];
+  // find all strings that start with s
+  let matches = dirListing.filter((str: string) => str.startsWith(s));
+  // sort them alphabetically
+  matches.sort();
+  let prefix = s;
+  if (matches.length !== 1) {
+    let next = '';
+    let done = false;
+    while (!done) {
+      done = true;
+      for (let i = 0; i < matches.length - 1; i++) {
+        // compare the current prefix with the next character of each match
+        next = prefix + matches[i][prefix.length];
+        if (next !== prefix + matches[i + 1][prefix.length]) {
+          // if there is a mismatch, stop extending the prefix
+          done = true;
+          break;
+        }
+      }
+      if (!done) {
+        // if there is no mismatch, extend the prefix by one character and continue
+        prefix = next;
+      }
+    }
+  } else {
+    prefix = matches[0];
+  }
+  let lastIndex = command.lastIndexOf(' ');
+  command = command.substring(0, lastIndex);
+  return `${command} ${prefix}`; // return the longest common prefix integrated intp the command
+}
+
 function processCommand({
   command,
   dirBiscuitCrumbs,

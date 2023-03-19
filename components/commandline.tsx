@@ -11,7 +11,7 @@ import {
   setPureCommands,
   setResponses,
 } from '@/store/commandlineSlice';
-import processCommand from '@/commandLogic/commandProcessor';
+import processCommand, { autoCompleteDir } from '@/commandLogic/commandProcessor';
 
 const LoginMessage = dynamic(() => import('./terminalBootup'), { ssr: false });
 
@@ -92,6 +92,13 @@ const CommandLine = () => {
         setCurrentCommand(pureCommands[commandIndex]);
         setCommandIndex(commandIndex + 1);
       }
+    }
+
+    // if tab then autocomplete
+    if (e.keyCode == 9) {
+      e.preventDefault();
+      let autoCompleteCommand = autoCompleteDir(currentCommand, dirBiscuitCrumbs);
+      setCurrentCommand(autoCompleteCommand);
     }
 
     // if enter key then submit
