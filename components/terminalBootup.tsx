@@ -1,6 +1,8 @@
+import { setUsername } from '@/store/commandlineSlice';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-const loginMessage = (ip: string) => {
+const loginMessage = (ip: string, username: string) => {
   var currentdate = new Date();
   var datetime =
     ('0' + currentdate.getDate()).slice(-2) +
@@ -12,7 +14,7 @@ const loginMessage = (ip: string) => {
     currentdate.getHours() +
     ':' +
     currentdate.getMinutes();
-  let username = localStorage.getItem('username');
+
   return `
   logged in as: ${username ? username : 'guest'}
   ###################################################################################################
@@ -30,9 +32,15 @@ const loginMessage = (ip: string) => {
 };
 
 const LoginMessage = () => {
+  let username = localStorage.getItem('username');
+  username = username ? username : 'guest';
+  const dispatch = useDispatch();
+
+  dispatch(setUsername(username));
+
   return (
     <div className={'typing-container'}>
-      <p className="typed">{loginMessage('0.0.0.0')}</p>
+      <p className="typed">{loginMessage('0.0.0.0', username)}</p>
     </div>
   );
 };

@@ -7,6 +7,7 @@ export interface CommandLineState {
   pureCommands: string[];
   responses: string[];
   dirBiscuitCrumbs: string[];
+  username: string;
 }
 
 const initialState: CommandLineState = {
@@ -14,6 +15,7 @@ const initialState: CommandLineState = {
   pureCommands: [],
   responses: [],
   dirBiscuitCrumbs: [''],
+  username: 'guest',
 };
 
 export const commandlineSlice = createSlice({
@@ -32,6 +34,9 @@ export const commandlineSlice = createSlice({
     setDirBiscuitCrumbs(state, action) {
       state.dirBiscuitCrumbs = action.payload;
     },
+    setUsername(state, action) {
+      state.username = action.payload;
+    },
   },
 
   // Special reducer for hydrating the state. Special case for next-redux-wrapper
@@ -43,6 +48,7 @@ export const commandlineSlice = createSlice({
         ...action.payload.pureCommands,
         ...action.payload.responses,
         ...action.payload.dirBiscuitCrumbs,
+        ...action.payload.username,
       };
     },
   },
@@ -52,10 +58,12 @@ export const { setCommands } = commandlineSlice.actions;
 export const { setPureCommands } = commandlineSlice.actions;
 export const { setResponses } = commandlineSlice.actions;
 export const { setDirBiscuitCrumbs } = commandlineSlice.actions;
+export const { setUsername } = commandlineSlice.actions;
 
 export const selectCommands = (state: AppState) => state.cli.commands;
 export const selectPureCommands = (state: AppState) => state.cli.pureCommands;
 export const selectResponses = (state: AppState) => state.cli.responses;
 export const selectBiscuitCrumbs = (state: AppState) => state.cli.dirBiscuitCrumbs;
+export const selectUsername = (state: AppState) => state.cli.username;
 
 export default commandlineSlice.reducer;
