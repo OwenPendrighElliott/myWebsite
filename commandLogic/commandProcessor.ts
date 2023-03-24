@@ -75,7 +75,10 @@ function processCommand({
       return '';
     }
     if (
-      directoryStructure.get(dirBiscuitCrumbs[dirBiscuitCrumbs.length - 1]).includes(attemptedDir)
+      directoryStructure
+        .get(dirBiscuitCrumbs[dirBiscuitCrumbs.length - 1])
+        .includes(attemptedDir) &&
+      directoryStructure.get(attemptedDir)
     ) {
       updateBiscuitCrumbs([...dirBiscuitCrumbs, attemptedDir]);
       return '';

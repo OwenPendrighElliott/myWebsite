@@ -6,6 +6,7 @@ import {
   selectCommands,
   selectPureCommands,
   selectResponses,
+  selectUsername,
   setCommands,
   setDirBiscuitCrumbs,
   setPureCommands,
@@ -14,8 +15,6 @@ import {
 import processCommand, { autoCompleteDir } from '@/commandLogic/commandProcessor';
 
 const LoginMessage = dynamic(() => import('./terminalBootup'), { ssr: false });
-
-let promptLine = 'guest@my-website:~';
 
 function interleaveHistory(commands: string[], responses: string[]): JSX.Element[] {
   let interleavedArr: JSX.Element[] = [];
@@ -29,13 +28,20 @@ function interleaveHistory(commands: string[], responses: string[]): JSX.Element
 const CommandLine = () => {
   const dispatch = useDispatch();
 
+  const username = useSelector(selectUsername);
   const responses = useSelector(selectResponses);
   const commands = useSelector(selectCommands);
   const pureCommands = useSelector(selectPureCommands);
   const dirBiscuitCrumbs = useSelector(selectBiscuitCrumbs);
 
+  const [promptLine, setPromptLine] = useState<string>('guest@oe-dev:~');
+
   const [commandIndex, setCommandIndex] = useState<number>(commands.length);
   const [currentCommand, setCurrentCommand] = useState<string>('');
+
+  useEffect(() => {
+    setPromptLine(`${username}@my-website:~`);
+  }, [username]);
 
   function updateCommands(commands: string[]) {
     dispatch(setCommands(commands));
@@ -49,6 +55,10 @@ const CommandLine = () => {
   function updateBiscuitCrumbs(dirBiscuitCrumbs: string[]) {
     dispatch(setDirBiscuitCrumbs(dirBiscuitCrumbs));
   }
+
+  useEffect(() => {
+    window.scrollTo(0, document.body.scrollHeight);
+  }, [responses]);
 
   const onFormSubmit = (e: any) => {
     e.preventDefault();
