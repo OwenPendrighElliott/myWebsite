@@ -1,9 +1,8 @@
 .app-bar div {
   display: flex;
   flex-direction: row;
-  /* gap: 1vw; */
   font-family: 'Roboto', sans-serif;
-  color: white;
+  color: #fff;
 }
 
 .app-bar-element {
@@ -28,7 +27,8 @@
   visibility: visible;
   opacity: 1;
   transition: all 0.7s ease;
-  background-color: rgb(7, 20, 32);
+  /* background-color: rgb(7, 20, 32); */
+  background-color: #0b121c;
   padding-top: 1vh;
   padding-bottom: 1vh;
 }

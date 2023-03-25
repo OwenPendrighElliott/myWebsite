@@ -1,10 +1,17 @@
+.about-page {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+}
+
 .about-title {
   margin-bottom: 20px;
 }
 
-.about-paragraph {
-  margin-bottom: 20px;
-}
+/* .about-paragraph {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+} */
 
 .language-display h2 {
   padding-bottom: 20px;

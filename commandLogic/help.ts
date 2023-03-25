@@ -13,6 +13,7 @@ Available commands:
 Navigation:
     Use the up and down arrows to cycle through previous commands.
     Press the tab key to autocomplete the name of a folder or file in the current directory
+
 `;
 
 export default helpStr;
