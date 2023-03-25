@@ -4,17 +4,42 @@
 .page {
   /* font-family: 'Red Hat Mono', monospace; */
   font-family: 'Roboto', sans-serif;
-  color: white;
-  margin: 20px;
+  color: #fff;
+  padding: 20px;
+  background-color: #1f2937;
+  min-width: 100wv;
+  min-height: 100vh;
 }
 
 .page h1 {
   text-align: center;
 }
 
+@media screen and (orientation: portrait) {
+  .page h1 {
+    font-size: 2rem;
+  }
+}
+@media screen and (orientation: landscape) {
+  .page h1 {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .page h2 {
+    font-size: 1.5rem;
+  }
+}
+
 .page a {
-  color: white;
+  color: #fff;
   transition: all 0.2s ease-in-out;
+}
+
+.page p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 /* 
 @media (hover: hover) {

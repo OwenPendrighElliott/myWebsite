@@ -3,6 +3,7 @@ import '@/styles/page.css';
 import '@/styles/articlePage.css';
 import '@/styles/linksPage.css';
 import '@/styles/aboutPage.css';
+import '@/styles/musicPage.css';
 import '../components/commandline.css';
 import '../components/HomePage.css';
 import '../components/article.css';

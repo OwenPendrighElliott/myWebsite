@@ -11,7 +11,7 @@
   /* margin-bottom: 2vh; */
   transition: 0.5s;
   background-color: rgba(0, 0, 0, 0);
-  padding: 5px;
+  padding: 10px;
   border-radius: 5px;
   margin-bottom: 1vh;
 }
@@ -30,7 +30,8 @@
 .article-list-element:hover {
   transition: 0.5s ease-out;
   transform: scale(1.05);
-  background-color: rgb(43, 46, 85);
+  /* background-color: rgb(43, 46, 85); */
+  background-color: #0b121c;
 }
 
 .article-list-element img {
