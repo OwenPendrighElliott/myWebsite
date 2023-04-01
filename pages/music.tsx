@@ -1,7 +1,14 @@
 import { Space } from 'antd';
+import Head from 'next/head';
 const Music = () => {
   return (
     <div className="page">
+      <Head>
+        <title>Music</title>
+        <meta name="description" content="Owen's musical endeavours" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="music-page">
         <h1>Music</h1>
         <h2>
