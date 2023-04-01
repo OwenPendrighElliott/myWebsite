@@ -1,4 +1,5 @@
 import { Space, Avatar } from 'antd';
+import Head from 'next/head';
 import Image from 'next/image';
 
 type LogoAndLanguageDisplayProps = {
@@ -34,6 +35,12 @@ const About = () => {
 
   return (
     <div className="page">
+      <Head>
+        <title>About</title>
+        <meta name="description" content="About Owen" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="about-page">
         <h1 className="about-title">About</h1>
         <p className="about-paragraph">

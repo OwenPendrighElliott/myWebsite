@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -7,6 +8,12 @@ import { lnkMap } from '../commandLogic/mockFileSystem';
 const LinksToOtherSites = () => {
   return (
     <div className="page">
+      <Head>
+        <title>Links</title>
+        <meta name="description" content="Links for Owen's related accounts" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <h1 className="links-title">Links</h1>
       <div className="links">
         <a target="_blank" rel="noreferrer" href={'https://github.com/OwenPendrighElliott/'}>

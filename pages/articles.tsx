@@ -1,4 +1,5 @@
 import articleData, { ArticleMetadata } from '@/utils/articleData';
+import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 
@@ -29,6 +30,12 @@ const Articles = () => {
 
   return (
     <div className="page">
+      <Head>
+        <title>Articles</title>
+        <meta name="description" content="Landing page for Owen's articles" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <h1 className="articles-title">Articles</h1>
       <div className="article-list">
         {articleMetadatas.map((metadata: ArticleMetadata, i: number) => (
