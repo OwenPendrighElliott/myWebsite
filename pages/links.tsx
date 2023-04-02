@@ -55,6 +55,21 @@ const LinksToOtherSites = () => {
             </div>
           </div>
         </a>
+        <hr></hr>
+        <a target="_blank" rel="noreferrer" href={'https://www.youtube.com/@axiomatictheory2100'}>
+          <div className="link">
+            <Image
+              width={100}
+              height={100}
+              src={'/AxiomaticTheoryBand.jpg'}
+              alt="A photo of the band Axiomatic Theory"
+            />
+            <div>
+              <h2>Axiomatic Theory</h2>
+              <p>Check out my band Axiomatic Theory</p>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   );

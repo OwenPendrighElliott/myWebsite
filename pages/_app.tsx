@@ -12,19 +12,22 @@ import type { AppProps } from 'next/app';
 import { wrapper } from '../store/store';
 import NextNProgress from 'nextjs-progressbar';
 import AppBar from '@/components/appBar';
-import { useSelector } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { selectIsCLI } from '@/store/homepageSlice';
 import { useRouter } from 'next/router';
 
-function App({ Component, pageProps }: AppProps) {
+function App({ Component, ...rest }: AppProps) {
+  const { store, props } = wrapper.useWrappedStore(rest);
+  const { pageProps } = props;
+
   const isCLI = useSelector(selectIsCLI);
   const router = useRouter();
   return (
-    <>
+    <Provider store={store}>
       <NextNProgress />
       <AppBar hidden={isCLI && router.pathname == '/'}></AppBar>
       <Component {...pageProps} />
-    </>
+    </Provider>
   );
 }
 

@@ -1,16 +1,19 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { createWrapper } from 'next-redux-wrapper';
+import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit';
+import { createWrapper, MakeStore } from 'next-redux-wrapper';
 import { homepageSlice } from './homepageSlice';
 import { commandlineSlice } from './commandlineSlice';
 
-const makeStore = () =>
-  configureStore({
-    reducer: {
-      [homepageSlice.name]: homepageSlice.reducer,
-      [commandlineSlice.name]: commandlineSlice.reducer,
-    },
+const reducers = {
+  [homepageSlice.name]: homepageSlice.reducer,
+  [commandlineSlice.name]: commandlineSlice.reducer,
+};
 
-    devTools: true,
+const reducer = combineReducers(reducers);
+
+const makeStore: MakeStore<any> = () =>
+  configureStore({
+    reducer,
+    middleware: (getDefaultMiddleware) => [...getDefaultMiddleware()].filter(Boolean) as any,
   });
 
 export type AppStore = ReturnType<typeof makeStore>;

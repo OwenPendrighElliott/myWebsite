@@ -3,3 +3,42 @@
   margin-right: auto;
   max-width: 800px;
 }
+
+.band-name-link {
+  margin-bottom: 1vh;
+}
+.band-name-link a {
+  text-decoration: none;
+}
+
+.band-yt-embed iframe {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.band-photos {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  max-width: 1000px;
+  margin-bottom: 20px;
+}
+
+.band-photos figure {
+  margin: 0;
+  text-align: center;
+}
+
+.band-photos img {
+  border-radius: 5px;
+  max-width: 100%;
+}
+
+.band-photos figcaption {
+  font-style: italic;
+  margin-top: 2px;
+}
