@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 .article {
+  padding-top: 100px !important;
   padding: 20px;
   font-family: 'Roboto', sans-serif;
   background-color: #202124;
