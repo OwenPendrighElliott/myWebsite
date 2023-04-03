@@ -8,6 +8,7 @@
   flex-direction: row;
   gap: 0.1rem;
   align-items: center;
+  cursor: pointer;
 }
 
 .ui-switch-container.fromcli {
@@ -27,7 +28,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
 
 .icon-container {
