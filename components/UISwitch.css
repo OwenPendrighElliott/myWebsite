@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Mono&display=swap');
+
+.ui-switch-container {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: row;
+  gap: 0.1rem;
+  align-items: center;
+}
+
+.ui-switch-container.fromcli {
+  font-family: 'Red Hat Mono', monospace;
+}
+.ui-switch-container.fromgui {
+  font-family: 'Roboto', sans-serif;
+}
+
+.ui-switch-continer {
+  color: white;
+}
+
+.ui-switch {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon-container {
+  width: 30px;
+  height: 30px;
+  border-radius: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #39ff14;
+  background-color: black;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.icon-container.active {
+  color: #fff;
+  background-color: #1f2937;
+}
+
+.icon-container div {
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon.active {
+  color: #39ff14;
+  background-color: black;
+}
+
+.icon.active {
+  color: #fff;
+  background-color: #1f2937;
+}
+
+.icon-container.active div {
+  transform: rotate(360deg);
+}

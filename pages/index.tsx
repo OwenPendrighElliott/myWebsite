@@ -6,6 +6,7 @@ import CommandLine from '../components/commandline';
 import { Switch } from 'antd';
 import HomePage from '@/components/HomePage';
 import { selectIsCLI, setIsCLI } from '@/store/homepageSlice';
+import UISwitch from '@/components/UISwitch';
 
 export default function Home() {
   const isCLI = useSelector(selectIsCLI);
@@ -27,17 +28,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div>
-          <div className={'render-controls'}>
-            <Switch
+        <div className={'render-controls'}>
+          <UISwitch />
+          {/* <Switch
               onChange={(v: boolean) => dispatch(setIsCLI(v))}
               checkedChildren="CLI"
               unCheckedChildren="GUI"
               checked={isCLI as boolean}
-            />
-          </div>
-          {isCLI ? <CommandLine /> : <HomePage />}
+            /> */}
         </div>
+        {isCLI ? <CommandLine /> : <HomePage />}
       </main>
     </>
   );

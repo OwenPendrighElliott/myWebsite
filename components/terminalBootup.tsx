@@ -11,24 +11,26 @@ const loginMessage = (ip: string, username: string) => {
     '/' +
     currentdate.getFullYear() +
     '@' +
-    currentdate.getHours() +
+    ('0' + currentdate.getHours()).slice(-2) +
     ':' +
-    currentdate.getMinutes();
+    ('0' + currentdate.getMinutes()).slice(-2);
 
-  return `
-  logged in as: ${username ? username : 'guest'}
-  ###################################################################################################
-  #                                    Welcome to My Website!                                       #
-  #                              Owen's Server release 1.0.0 (beta)                                 #
-  #                                                                                                 #
-  # You are on the latest stable release                                                            #
-  # Run 'help' for tips on getting started                                                          #
-  # For any bugs or issues with the release please reach out on GitHub                              #
-  # Current login: ${datetime} from ${ip} ${' '.repeat(
-    18 - ip.length,
-  )}                                        #
-  ###################################################################################################
-  `;
+  return (
+    <>
+      <p className="typed typed1">{`logged in as: ${username ? username : 'guest'}`}</p>
+      <p className="typed typed2">{`###################################################################################################`}</p>
+      <p className="typed typed3">{`#                                    Welcome to My Website!                                       #`}</p>
+      <p className="typed typed4">{`#                              Owen's Server release 1.0.0 (beta)                                 #`}</p>
+      <p className="typed typed5">{`#                                                                                                 #`}</p>
+      <p className="typed typed6">{`# You are on the latest stable release                                                            #`}</p>
+      <p className="typed typed7">{`# Run 'help' for tips on getting started                                                          #`}</p>
+      <p className="typed typed8">{`# For any bugs or issues with the release please reach out on GitHub                              #`}</p>
+      <p className="typed typed9">{`# Current login: ${datetime} from ${ip} ${' '.repeat(
+        18 - ip.length,
+      )}                                        #`}</p>
+      <p className="typed typed10">{`###################################################################################################`}</p>
+    </>
+  );
 };
 
 const LoginMessage = () => {
@@ -40,7 +42,7 @@ const LoginMessage = () => {
 
   return (
     <div className={'typing-container'}>
-      <p className="typed">{loginMessage('0.0.0.0', username)}</p>
+      <p>{loginMessage('0.0.0.0', username)}</p>
     </div>
   );
 };
