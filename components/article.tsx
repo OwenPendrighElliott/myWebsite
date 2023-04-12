@@ -23,8 +23,12 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
     switch (el.type) {
       case 'text':
         body.push(
-          <p key={i.toString()} className="article-para">
-            {el.content}
+          <p
+            key={i.toString()}
+            className="article-para"
+            dangerouslySetInnerHTML={{ __html: el.content }}
+          >
+            {/* {el.content} */}
           </p>,
         );
         continue;
@@ -38,6 +42,13 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
       case 'mono':
         body.push(
           <p key={i.toString()} className="article-mono">
+            {el.content}
+          </p>,
+        );
+        continue;
+      case 'quote':
+        body.push(
+          <p key={i.toString()} className="article-quote">
             {el.content}
           </p>,
         );

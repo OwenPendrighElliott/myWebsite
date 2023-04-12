@@ -8,6 +8,17 @@ export interface ArticleMetadata {
 
 const articleData = new Map<string, ArticleMetadata>();
 
+articleData.set('after-all-is-said-and-indexed', {
+  title: 'After All is Said and Indexed - Unlocking Information in Recorded Speech',
+  route: 'articles/after-all-is-said-and-indexed',
+  contentURL:
+    'https://d3kjqeh110p10g.cloudfront.net/2023-04-12-after-all-is-said-and-indexed/2023-04-12-after-all-is-said-and-indexed.json',
+  displayImageURL:
+    'https://d3kjqeh110p10g.cloudfront.net/2023-04-12-after-all-is-said-and-indexed/2023-04-12-after-all-is-said-and-indexed-cover.png',
+  summary:
+    'Creating an end-to-end system for processing speech data, indexing it into a vector store and then using the information as context for a language model to provide a conversational interface.',
+});
+
 articleData.set('training-a-neural-network-with-a-genetic-algorithm', {
   title: 'Training a Neural Network with a Genetic Algorithm',
   route: 'articles/training-a-neural-network-with-a-genetic-algorithm',
