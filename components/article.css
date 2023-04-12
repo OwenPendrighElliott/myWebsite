@@ -6,8 +6,6 @@
   font-family: 'Roboto', sans-serif;
   background-color: #202124;
   color: #bdc1c5;
-  /* padding-left: 20vw;
-  padding-right: 20vw; */
 }
 
 @media screen and (orientation: portrait) {
@@ -26,6 +24,10 @@
 .article h1 {
   color: white;
   margin-bottom: 3vh;
+}
+
+.article a {
+  color: #bdc1c5;
 }
 
 .article-para {
@@ -67,6 +69,22 @@
 
 @media screen and (orientation: portrait) {
   .article-mono {
+    font-size: small;
+  }
+}
+
+.article-quote {
+  white-space: pre-wrap;
+  border-left: 10px solid #bdc1c5;
+  background-color: rgb(60, 60, 60);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 1vh;
+  overflow-x: auto;
+}
+
+@media screen and (orientation: portrait) {
+  .article-quote {
     font-size: small;
   }
 }
