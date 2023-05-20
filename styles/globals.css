@@ -27,8 +27,9 @@ body {
   .render-controls {
     position: absolute;
     text-align: right;
-    bottom: 0px;
+    top: 65px;
     right: 0px;
+    font-size: 14px;
     padding-bottom: 15px;
     padding-right: 15px;
   }
