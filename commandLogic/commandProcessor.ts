@@ -141,6 +141,11 @@ function processCommand({
     }
   }
 
+  if (commandParts[0] == 'whoami') {
+    let user = localStorage.getItem('username');
+    return user ? user : 'guest';
+  }
+
   if (command == 'help') {
     return helpStr;
   }

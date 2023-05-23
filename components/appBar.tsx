@@ -1,10 +1,3 @@
-import {
-  CodeOutlined,
-  CustomerServiceOutlined,
-  FileTextOutlined,
-  HomeOutlined,
-  LinkOutlined,
-} from '@ant-design/icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';

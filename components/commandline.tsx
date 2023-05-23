@@ -57,7 +57,9 @@ const CommandLine = () => {
   }
 
   useEffect(() => {
-    window.scrollTo(0, document.body.scrollHeight);
+    if (window.innerHeight < window.innerWidth) {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
   }, [responses]);
 
   const onFormSubmit = (e: any) => {

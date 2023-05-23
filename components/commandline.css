@@ -15,6 +15,7 @@
   color: #39ff14;
   background-color: black;
   min-height: 100%;
+  margin-left: 10px;
 }
 
 @media screen and (orientation: portrait) {
