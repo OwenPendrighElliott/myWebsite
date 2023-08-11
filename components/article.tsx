@@ -3,6 +3,7 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 const SyntaxHighlighter = React.lazy(() =>
   import('react-syntax-highlighter').then((module) => ({ default: module.PrismAsyncLight })),
 );
+import ReactMarkdown from 'react-markdown'
 import { trackPromise } from 'react-promise-tracker';
 import LoadingIndicator from './loadingPromise';
 import LoadingPromise from './loadingPromise';
@@ -20,37 +21,16 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
   let body: JSX.Element[] = [];
   for (let i = 0; i < bodyElements.length; i++) {
     let el = bodyElements[i];
+    console.log(el);
     switch (el.type) {
-      case 'text':
+      case 'markdown':
         body.push(
-          <p
+          <ReactMarkdown
             key={i.toString()}
-            className="article-para"
-            dangerouslySetInnerHTML={{ __html: el.content }}
+            className='article-markdown'
           >
-            {/* {el.content} */}
-          </p>,
-        );
-        continue;
-      case 'subtitle':
-        body.push(
-          <h3 key={i.toString()} className="article-subtitle">
             {el.content}
-          </h3>,
-        );
-        continue;
-      case 'mono':
-        body.push(
-          <p key={i.toString()} className="article-mono">
-            {el.content}
-          </p>,
-        );
-        continue;
-      case 'quote':
-        body.push(
-          <p key={i.toString()} className="article-quote">
-            {el.content}
-          </p>,
+          </ReactMarkdown>
         );
         continue;
       case 'code':
@@ -63,34 +43,6 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
             >
               {el.content}
             </SyntaxHighlighter>
-          </div>,
-        );
-        continue;
-      case 'math':
-        body.push(
-          <p key={i.toString()} className="article-math">
-            {el.content}
-          </p>,
-        );
-        continue;
-      case 'image':
-        body.push(
-          <div key={i.toString()} className="article-image">
-            <img src={el.content} alt={el.alt} loading="lazy"></img>
-            {el.caption ? <p>{el.caption}</p> : <></>}
-          </div>,
-        );
-        continue;
-      case 'list':
-        body.push(
-          <div key={i.toString()} className="article-list article-para">
-            <ul>
-              {el.elements ? (
-                el.elements.map((el: string, i: number) => <li key={i.toString()}>{el}</li>)
-              ) : (
-                <></>
-              )}
-            </ul>
           </div>,
         );
         continue;
@@ -129,11 +81,14 @@ const Article = ({ title, contentURL }: ArticleProps) => {
     onLoadArticle();
   }, []);
 
+  useEffect(() => {
+    console.log(articleData)
+  }, [articleData])
+
   return (
     <div className="article">
       <Suspense fallback={<LoadingIndicator />}>
         <LoadingPromise />
-        <h1>{title}</h1>
         {constructArticleBody(articleData)}
       </Suspense>
     </div>

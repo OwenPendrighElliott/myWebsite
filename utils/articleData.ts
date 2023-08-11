@@ -8,6 +8,17 @@ export interface ArticleMetadata {
 
 const articleData = new Map<string, ArticleMetadata>();
 
+articleData.set('multiprocessing-context', {
+  title: 'Creating a Multiprocessing Context in Python',
+  route: 'articles/multiprocessing-context',
+  contentURL:
+    'https://d3kjqeh110p10g.cloudfront.net/2023-07-13-multiprocessing-context/creating_a_multiprocessing_context_in_python.json',
+  displayImageURL:
+    'https://d3kjqeh110p10g.cloudfront.net/2023-04-12-after-all-is-said-and-indexed/2023-04-12-after-all-is-said-and-indexed-cover.png',
+  summary:
+    'Implementing a Python package that uses introspection to automatically parallelise your code.',
+});
+
 articleData.set('after-all-is-said-and-indexed', {
   title: 'After All is Said and Indexed - Unlocking Information in Recorded Speech',
   route: 'articles/after-all-is-said-and-indexed',

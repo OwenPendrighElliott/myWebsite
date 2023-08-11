@@ -3,6 +3,17 @@
   display: inline-block;
 }
 
+@media screen and (orientation: portrait) {
+  .typing-container {
+    font-size: 10px;
+  }
+}
+@media screen and (orientation: landscape) {
+  .typing-container {
+    font-size: 16px;
+  }
+}
+
 .typed {
   overflow: hidden;
   white-space: pre;
