@@ -39,7 +39,7 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
             <SyntaxHighlighter
               language={el.language}
               style={vscDarkPlus}
-              codeTagProps={{ fontSize: 'inherit' }}
+              codeTagProps={{ style: { fontSize: '16px' }}}
             >
               {el.content}
             </SyntaxHighlighter>

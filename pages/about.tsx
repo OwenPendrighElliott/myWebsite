@@ -9,7 +9,7 @@ type LogoAndLanguageDisplayProps = {
 const LogoAndLanguageDisplay = ({ languagesAndLogos }: LogoAndLanguageDisplayProps) => {
   return (
     <div className={'language-display'}>
-      <h2>Languages I work with</h2>
+      <h2>Languages I mostly work with</h2>
       <div className={'languages'}>
         {languagesAndLogos.map((lal: string[], i: number) => {
           return (
@@ -31,6 +31,7 @@ const About = () => {
     ['JavaScript', '/JS.png'],
     ['TypeScript', '/TS.png'],
     ['SAS', '/SAS.png'],
+    ['SQL', '/sql.png'],
   ];
 
   return (
@@ -44,9 +45,9 @@ const About = () => {
       <div className="about-page">
         <h1 className="about-title">About</h1>
         <p className="about-paragraph">
-          Hi I&apos;m Owen! I am passionate about all things software engineering and AI! I have
-          experience working in analytics, data engineering and artificial intelligence across
-          government, banking and defence. I graduated from ANU with a double degree in IT and Music
+          Hi I&apos;m Owen! I am passionate about all things systems architecture, software engineering and AI! I am 
+          a solutions architect with experience in system archtiecture, softwarem simulation, and AI across
+          government, banking, mining, defence, and e-commerce. I graduated from ANU with a double degree in IT and Music
           where I focused on classical guitar and data science.
         </p>
         <LogoAndLanguageDisplay languagesAndLogos={languagesAndLogos} />

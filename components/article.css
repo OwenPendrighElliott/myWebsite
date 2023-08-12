@@ -4,8 +4,10 @@
   padding-top: 100px !important;
   padding: 20px;
   font-family: 'Roboto', sans-serif;
-  background-color: #202124;
-  color: #d3d8dc;
+  background-color: #28292d;
+  color: #ecf2f7;
+  font-size: 18px;
+  line-height: 150%;
 }
 
 .article-markdown {
@@ -20,7 +22,7 @@
 }
 
 .article-markdown code {
-  color:#e5e5e5;
+  color:#e6a101;
   background-color: #1a1a1a;
   padding: 4px;
   border-radius: 5px;
@@ -60,7 +62,7 @@
   margin-bottom: 1vh;
 }
 
-@media screen and (orientation: portrait) {
+/* @media screen and (orientation: portrait) {
   .article-para {
     font-size: small;
   }
@@ -80,7 +82,7 @@
   .article-code-block {
     font-size: large;
   }
-}
+} */
 
 .article-code-block {
   border-radius: 20px;
@@ -113,11 +115,11 @@
   overflow-x: auto;
 }
 
-@media screen and (orientation: portrait) {
+/* @media screen and (orientation: portrait) {
   .article-quote {
     font-size: small;
   }
-}
+} */
 
 .article-math {
   font-size: larger;
