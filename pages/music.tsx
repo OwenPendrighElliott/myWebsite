@@ -9,7 +9,7 @@ const Music = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="music-page">
-        <h1>Music</h1>
+        <h1 className="music-title">Music</h1>
         <h2 className={'band-name-link'}>
           <a href="http://axiomatictheory.band/">Axiomatic Theory</a>
         </h2>

@@ -39,42 +39,14 @@
 }
 
 .page p {
-  font-size: 1.2rem;
+  font-size: 18px;
   margin-bottom: 2rem;
 }
-/* 
-@media (hover: hover) {
-  .page a:hover {
-    color: red;
-    transform: scale(1.2);
+
+@media screen and (max-width: 768px) {
+  .page p {
+    font-size: 16px;
   }
-} */
-
-.languages {
-  display: flex;
-  justify-content: space-around;
-}
-
-/* .languages > * {
-  display: block;
-  margin: 100px;
-} */
-
-.language-name-pair {
-  display: block;
-  text-align: center;
-}
-
-.language-display {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-.language-display img {
-  height: 50px;
-  width: 50px;
 }
 
 .narrow-center-text {
