@@ -34,7 +34,7 @@ articleData.set('training-a-neural-network-with-a-genetic-algorithm', {
   title: 'Training a Neural Network with a Genetic Algorithm',
   route: 'articles/training-a-neural-network-with-a-genetic-algorithm',
   contentURL:
-    'https://d3kjqeh110p10g.cloudfront.net/2021-05-01-training-a-neural-network-with-a-genetic-algorithm/2021-05-01-training-a-neural-network-with-a-genetic-algorithm.json',
+    'https://d3kjqeh110p10g.cloudfront.net/2021-05-01-training-a-neural-network-with-a-genetic-algorithm/2021-05-01-training-a-neural-network-with-a-genetic-algorithm_v2.json',
   displayImageURL:
     'https://d3kjqeh110p10g.cloudfront.net/2021-05-01-training-a-neural-network-with-a-genetic-algorithm/2021-05-01-training-a-neural-network-with-a-genetic-algorithm-architecture.png',
   summary:
@@ -45,7 +45,7 @@ articleData.set('deep-dreams-in-pytorch', {
   title: 'Deep Dreams in PyTorch',
   route: 'articles/deep-dreams-in-pytorch',
   contentURL:
-    'https://d3kjqeh110p10g.cloudfront.net/2020-09-16-deep-dreams-in-pytorch/2020-09-16-deep-dreams-in-pytorch.json',
+    'https://d3kjqeh110p10g.cloudfront.net/2020-09-16-deep-dreams-in-pytorch/2020-09-16-deep-dreams-in-pytorch_v2.json',
   displayImageURL:
     'https://d3kjqeh110p10g.cloudfront.net/2020-09-16-deep-dreams-in-pytorch/2020-09-16-deep-dreams-in-pytorch-cover.jpg',
   summary:
@@ -56,7 +56,7 @@ articleData.set('convnet-autoencoder-for-scan-cleaning', {
   title: 'ConvNet Autoencoder for Scan Cleaning',
   route: 'articles/convnet-autoencoder-for-scan-cleaning',
   contentURL:
-    'https://d3kjqeh110p10g.cloudfront.net/2021-01-18-ConvNet-Autoencoder-for-Scan-Cleaning/2021-01-18-ConvNet-Autoencoder-for-Scan-Cleaning.json',
+    'https://d3kjqeh110p10g.cloudfront.net/2021-01-18-ConvNet-Autoencoder-for-Scan-Cleaning/2021-01-18-ConvNet-Autoencoder-for-Scan-Cleaning_v2.json',
   displayImageURL:
     'https://d3kjqeh110p10g.cloudfront.net/2021-01-18-ConvNet-Autoencoder-for-Scan-Cleaning/2021-01-18-ConvNet-Autoencoder-for-Scan-Cleaning-cover.png',
   summary:
