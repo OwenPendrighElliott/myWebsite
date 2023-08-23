@@ -16,7 +16,11 @@ export const getStaticProps: GetServerSideProps = async (ctx) => {
   return {
     props: {
       title: articleMetadata.title,
+      displayImageURL: articleMetadata.displayImageURL,
       contentURL: articleMetadata.contentURL,
+      description: articleMetadata.summary,
+      tags: articleMetadata.tags,
+      author: articleMetadata.author,
     },
   };
 };
@@ -30,19 +34,35 @@ export const getStaticPaths: GetStaticPaths<{ article: string }> = async () => {
 
 type ArticleProps = {
   title: string;
+  displayImageURL: string;
   contentURL: string;
+  description: string;
+  tags: string;
+  author: string;
 };
 
-const ArticlePage = ({ title, contentURL }: ArticleProps) => {
+const ArticlePage = ({
+  title,
+  displayImageURL,
+  contentURL,
+  description,
+  tags,
+  author,
+}: ArticleProps) => {
   return (
     <div>
       <Head>
         <title>{title}</title>
-        <meta name="description" content={title} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:image" content={displayImageURL} />
+        <meta name="author" content={author} />
+        <meta name="tags" content={tags} />
+        <meta property="og:type" content="article" />
       </Head>
-      <Article title={title} contentURL={contentURL} />
+      <Article contentURL={contentURL} />
     </div>
   );
 };
