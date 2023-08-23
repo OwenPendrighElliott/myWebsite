@@ -1,18 +1,46 @@
 .about-page {
   margin-left: auto;
   margin-right: auto;
-  max-width: 800px;
+  max-width: 1000px;
 }
 
 .about-title {
   margin-bottom: 20px;
 }
 
-/* .about-paragraph {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-} */
-
 .language-display h2 {
   padding-bottom: 20px;
+}
+
+.about-paragraph {
+  font-size: 12px;
+}
+
+.language-display {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.languages {
+  display: flex;
+  justify-content: space-around;
+}
+@media screen and (max-width: 768px) {
+  .languages {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+.language-name-pair {
+  display: block;
+  text-align: center;
+}
+
+.language-display img {
+  height: 50px;
+  width: 50px;
 }

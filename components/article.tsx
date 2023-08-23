@@ -36,7 +36,7 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
             <SyntaxHighlighter
               language={el.language}
               style={vscDarkPlus}
-              codeTagProps={{ style: { fontSize: window.innerWidth <= 768 ? "14px" : "16px" } }}
+              codeTagProps={{ style: { fontSize: window.innerWidth <= 768 ? '14px' : '16px' } }}
             >
               {el.content}
             </SyntaxHighlighter>
