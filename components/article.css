@@ -4,10 +4,18 @@
   padding-top: 100px !important;
   padding: 20px;
   font-family: 'Roboto', sans-serif;
-  background-color: #28292d;
-  color: #ecf2f7;
+  background-color: #222326;
+  color: #cccccc;
   font-size: 18px;
   line-height: 150%;
+}
+
+.article img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1400px;
+  width: 90%;
 }
 
 .article-markdown {
@@ -15,14 +23,15 @@
 }
 
 .article-markdown h1 {
-  color: white;
-  border-bottom: 3px solid #a7a7a7; 
+  border-bottom: 3px solid #a7a7a7;
   padding-bottom: 10px;
   margin-bottom: 10px;
+  line-height: normal;
+  font-weight: bold;
 }
 
 .article-markdown code {
-  color:#e6a101;
+  color: rgb(215 186 125);
   background-color: #1a1a1a;
   padding: 4px;
   border-radius: 5px;
@@ -48,64 +57,19 @@
   }
 }
 
-/* .article h1 {
-  color: white;
-  margin-bottom: 3vh;
-} */
-
 .article a {
   color: #bdc1c5;
 }
 
-.article-para {
-  line-height: 150%;
-  margin-bottom: 1vh;
-}
-
-/* @media screen and (orientation: portrait) {
-  .article-para {
-    font-size: small;
-  }
-}
-@media screen and (orientation: landscape) {
-  .article-para {
-    font-size: large;
-  }
-}
-
-@media screen and (orientation: portrait) {
-  .article-code-block {
-    font-size: small;
-  }
-}
-@media screen and (orientation: landscape) {
-  .article-code-block {
-    font-size: large;
-  }
-} */
-
 .article-code-block {
-  border-radius: 20px;
-  overflow: hidden;
+  margin-bottom: 10px;
 }
 
-.article-mono {
-  font-family: 'Red Hat Mono', monospace;
-  white-space: pre;
-  background-color: rgb(60, 60, 60);
+.article-code-block pre {
   border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 1vh;
-  overflow-x: auto;
 }
 
-@media screen and (orientation: portrait) {
-  .article-mono {
-    font-size: small;
-  }
-}
-
-.article-quote {
+.article blockquote {
   white-space: pre-wrap;
   border-left: 10px solid #bdc1c5;
   background-color: rgb(60, 60, 60);
@@ -113,61 +77,4 @@
   padding: 15px;
   margin-bottom: 1vh;
   overflow-x: auto;
-}
-
-/* @media screen and (orientation: portrait) {
-  .article-quote {
-    font-size: small;
-  }
-} */
-
-.article-math {
-  font-size: larger;
-  font-family: 'Times New Roman', Times, serif;
-  font-style: italic;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: center;
-  width: 100%;
-  word-spacing: normal;
-}
-
-.article-subtitle {
-  margin-top: 3vh;
-  margin-bottom: 1vh;
-}
-
-.article-image {
-  padding-bottom: 2vh;
-}
-
-.article-image img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-height: 500px;
-}
-
-@media screen and (orientation: portrait) {
-  .article-image img {
-    max-width: 85vw;
-  }
-}
-@media screen and (orientation: landscape) {
-  .article-image img {
-    max-width: 60vw;
-  }
-}
-
-.article-image p {
-  padding-top: 0.5vh;
-  text-align: center;
-  font-style: italic;
-  font-size: small;
-}
-
-.article-list {
-  line-height: 150%;
-  margin-bottom: 1vh;
-  margin-left: 20px;
 }

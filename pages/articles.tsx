@@ -12,14 +12,10 @@ type ArticleDisplayProps = {
 const ArticleDisplay = ({ title, displayImageURL, summary }: ArticleDisplayProps) => {
   return (
     <div className={'article-list-element'}>
-      <div>
+      <img src={displayImageURL} alt={title} />
+      <div className="article-title-desc">
         <h3>{title}</h3>
-        <div className="image-summary-pair">
-          <p>
-            <img src={displayImageURL} alt={title} />
-            {summary}
-          </p>
-        </div>
+        <p>{summary}</p>
       </div>
     </div>
   );
@@ -32,7 +28,8 @@ const Articles = () => {
     <div className="page">
       <Head>
         <title>Articles</title>
-        <meta name="description" content="Landing page for Owen's articles" />
+        <meta name="og:title" content="Articles" />
+        <meta name="og:description" content="Landing page for Owen's articles" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

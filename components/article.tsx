@@ -3,7 +3,7 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 const SyntaxHighlighter = React.lazy(() =>
   import('react-syntax-highlighter').then((module) => ({ default: module.PrismAsyncLight })),
 );
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown';
 import { trackPromise } from 'react-promise-tracker';
 import LoadingIndicator from './loadingPromise';
 import LoadingPromise from './loadingPromise';
@@ -25,12 +25,9 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
     switch (el.type) {
       case 'markdown':
         body.push(
-          <ReactMarkdown
-            key={i.toString()}
-            className='article-markdown'
-          >
+          <ReactMarkdown key={i.toString()} className="article-markdown">
             {el.content}
-          </ReactMarkdown>
+          </ReactMarkdown>,
         );
         continue;
       case 'code':
@@ -39,7 +36,7 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
             <SyntaxHighlighter
               language={el.language}
               style={vscDarkPlus}
-              codeTagProps={{ style: { fontSize: '16px' }}}
+              codeTagProps={{ style: { fontSize: '16px' } }}
             >
               {el.content}
             </SyntaxHighlighter>
@@ -52,11 +49,10 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
 }
 
 type ArticleProps = {
-  title: string;
   contentURL: string;
 };
 
-const Article = ({ title, contentURL }: ArticleProps) => {
+const Article = ({ contentURL }: ArticleProps) => {
   const [articleData, setArticleData] = useState<ArticleElement[]>([]);
 
   const onLoadArticle = () => {
@@ -82,8 +78,8 @@ const Article = ({ title, contentURL }: ArticleProps) => {
   }, []);
 
   useEffect(() => {
-    console.log(articleData)
-  }, [articleData])
+    console.log(articleData);
+  }, [articleData]);
 
   return (
     <div className="article">

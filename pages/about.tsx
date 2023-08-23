@@ -45,10 +45,11 @@ const About = () => {
       <div className="about-page">
         <h1 className="about-title">About</h1>
         <p className="about-paragraph">
-          Hi I&apos;m Owen! I am passionate about all things systems architecture, software engineering and AI! I am 
-          a solutions architect with experience in system archtiecture, softwarem simulation, and AI across
-          government, banking, mining, defence, and e-commerce. I graduated from ANU with a double degree in IT and Music
-          where I focused on classical guitar and data science.
+          Hi I&apos;m Owen! I am passionate about all things systems architecture, software
+          engineering and AI! I am a solutions architect with experience in system archtiecture,
+          softwarem simulation, and AI across government, banking, mining, defence, and e-commerce.
+          I graduated from ANU with a double degree in IT and Music where I focused on classical
+          guitar and data science.
         </p>
         <LogoAndLanguageDisplay languagesAndLogos={languagesAndLogos} />
       </div>
