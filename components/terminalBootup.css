@@ -26,6 +26,12 @@
   animation-fill-mode: forwards;
 }
 
+@media screen and (max-width: 767px) {
+  .typed {
+    animation-timing-function: steps(20, end), step-end;
+  }
+}
+
 .typed1 {
   animation-delay: 0s;
 }
