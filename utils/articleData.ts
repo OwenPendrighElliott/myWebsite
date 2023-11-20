@@ -10,6 +10,32 @@ export interface ArticleMetadata {
 
 const articleData = new Map<string, ArticleMetadata>();
 
+articleData.set('rethinking-search', {
+  title: 'Rethinking Vector Search Experiences',
+  route: 'articles/rethinking-search',
+  contentURL:
+    'https://d3kjqeh110p10g.cloudfront.net/2023-11-21-rethinking-search-experiences/2023-11-21-rethinking-search-experiences.json',
+  displayImageURL:
+    'https://d3kjqeh110p10g.cloudfront.net/2023-11-21-rethinking-search-experiences/articleHeader.png',
+  summary:
+    'Demonstrating UI components to deliver interesting vector search experiences.',
+  author: 'Owen Elliott',
+  tags: 'UI, UX, vector search',
+});
+
+articleData.set('contemplation', {
+  title: 'Contemplation - Introspection in Python',
+  route: 'articles/contemplation',
+  contentURL:
+    'https://d3kjqeh110p10g.cloudfront.net/2023-10-06-contemplation/2023-10-06-contemplation.json',
+  displayImageURL:
+    'https://d3kjqeh110p10g.cloudfront.net/2023-10-06-contemplation/2023-10-06-contemplation.webp',
+  summary:
+    'Building a Python package to unlock the power of introspection.',
+  author: 'Owen Elliott',
+  tags: 'python, introspection, development',
+});
+
 articleData.set('multiprocessing-context', {
   title: 'Creating a Multiprocessing Context in Python',
   route: 'articles/multiprocessing-context',
