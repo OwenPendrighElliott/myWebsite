@@ -17,8 +17,7 @@ articleData.set('rethinking-search', {
     'https://d3kjqeh110p10g.cloudfront.net/2023-11-21-rethinking-search-experiences/2023-11-21-rethinking-search-experiences.json',
   displayImageURL:
     'https://d3kjqeh110p10g.cloudfront.net/2023-11-21-rethinking-search-experiences/articleHeader.png',
-  summary:
-    'Demonstrating UI components to deliver interesting vector search experiences.',
+  summary: 'Demonstrating UI components to deliver interesting vector search experiences.',
   author: 'Owen Elliott',
   tags: 'UI, UX, vector search',
 });
@@ -30,8 +29,7 @@ articleData.set('contemplation', {
     'https://d3kjqeh110p10g.cloudfront.net/2023-10-06-contemplation/2023-10-06-contemplation.json',
   displayImageURL:
     'https://d3kjqeh110p10g.cloudfront.net/2023-10-06-contemplation/2023-10-06-contemplation.webp',
-  summary:
-    'Building a Python package to unlock the power of introspection.',
+  summary: 'Building a Python package to unlock the power of introspection.',
   author: 'Owen Elliott',
   tags: 'python, introspection, development',
 });
