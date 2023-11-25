@@ -4,7 +4,7 @@ const SyntaxHighlighter = React.lazy(() =>
   import('react-syntax-highlighter').then((module) => ({ default: module.PrismAsyncLight })),
 );
 import ReactMarkdown from 'react-markdown';
-import { trackPromise } from 'react-promise-tracker';
+import { trackPromise, usePromiseTracker } from 'react-promise-tracker';
 import LoadingIndicator from './loadingPromise';
 import LoadingPromise from './loadingPromise';
 
@@ -50,10 +50,13 @@ function constructArticleBody(bodyElements: ArticleElement[]): JSX.Element[] {
 
 type ArticleProps = {
   contentURL: string;
+  headerImageURL: string;
 };
 
-const Article = ({ contentURL }: ArticleProps) => {
+const Article = ({ contentURL, headerImageURL }: ArticleProps) => {
   const [articleData, setArticleData] = useState<ArticleElement[]>([]);
+
+  const { promiseInProgress } = usePromiseTracker();
 
   const onLoadArticle = () => {
     trackPromise(
@@ -82,12 +85,17 @@ const Article = ({ contentURL }: ArticleProps) => {
   }, [articleData]);
 
   return (
-    <div className="article">
-      <Suspense fallback={<LoadingIndicator />}>
-        <LoadingPromise />
-        {constructArticleBody(articleData)}
-      </Suspense>
-    </div>
+    <>
+      {!promiseInProgress && (
+        <img className="article-image-header" src={headerImageURL} alt="Article Header Image" />
+      )}
+      <div className="article">
+        <Suspense fallback={<LoadingIndicator />}>
+          <LoadingPromise />
+          {constructArticleBody(articleData)}
+        </Suspense>
+      </div>
+    </>
   );
 };
 

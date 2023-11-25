@@ -1,6 +1,7 @@
 .app-bar {
   position: absolute;
   width: 100%;
+  z-index: 100;
 }
 
 .app-bar div {
@@ -32,13 +33,12 @@
   visibility: visible;
   opacity: 1;
   transition: all 0.7s ease;
-  /* background-color: rgb(7, 20, 32); */
   background-color: #0b121c;
   padding-top: 1vh;
   padding-bottom: 1vh;
 }
 
 .app-bar-article {
-  /* background-color: #28292d; */
-  background-color: #222326;
+  /* background-color: #222326; */
+  background-color: rgba(0, 0, 0, 0);
 }

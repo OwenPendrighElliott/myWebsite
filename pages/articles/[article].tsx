@@ -62,7 +62,7 @@ const ArticlePage = ({
         <meta name="tags" content={tags} />
         <meta property="og:type" content="article" />
       </Head>
-      <Article contentURL={contentURL} />
+      <Article contentURL={contentURL} headerImageURL={displayImageURL} />
     </div>
   );
 };

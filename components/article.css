@@ -1,19 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 .article {
-  padding-top: 100px !important;
-  padding: 20px;
+  position: relative;
+  padding-top: 200px !important;
+  padding-bottom: 100px !important;
   font-family: 'Roboto', sans-serif;
-  background-color: #222326;
+  background-image: linear-gradient(to bottom, rgba(34, 35, 38, 0.8), #222326 400px);
   color: #cccccc;
   font-size: 18px;
   line-height: 150%;
+  z-index: 1;
 }
 
 @media screen and (max-width: 768px) {
   .article {
     font-size: 16px;
+    background-image: linear-gradient(to bottom, rgba(34, 35, 38, 0.8), #222326 250px);
+    padding-top: 100px !important;
   }
+}
+
+.article-image-header {
+  position: fixed;
+  width: 100vw;
+  object-fit: cover;
+  max-height: 500px;
+  z-index: 0;
+  filter: blur(3px);
 }
 
 .article img {
