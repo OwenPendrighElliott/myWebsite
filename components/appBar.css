@@ -23,6 +23,12 @@
   }
 }
 
+@media (hover: hover) {
+  .app-bar-element-article:hover {
+    background-color: rgba(122, 122, 122, 0.7) !important;
+  }
+}
+
 .app-bar-hide {
   visibility: hidden;
   opacity: 0;
