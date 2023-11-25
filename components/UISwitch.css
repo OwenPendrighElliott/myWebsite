@@ -9,6 +9,8 @@
   gap: 0.1rem;
   align-items: center;
   cursor: pointer;
+  position: relative;
+  z-index: 1000;
 }
 
 .ui-switch-container.fromcli {

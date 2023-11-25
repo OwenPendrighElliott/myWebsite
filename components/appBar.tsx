@@ -2,6 +2,37 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
+interface AppBarElementData {
+  text: string;
+  link: string;
+}
+
+const appBarElements: AppBarElementData[] = [
+  { text: 'Home', link: '/' },
+  { text: 'About', link: '/about' },
+  { text: 'Articles', link: '/articles' },
+  { text: 'Music', link: '/music' },
+  { text: 'Links', link: '/links' },
+];
+
+const AppBarElement = ({
+  text,
+  link,
+  isArticle,
+}: {
+  text: string;
+  link: string;
+  isArticle: boolean;
+}) => {
+  return (
+    <Link style={{ textDecoration: 'none', color: 'white' }} href={link}>
+      <div className={`app-bar-element ${isArticle ? 'app-bar-element-article' : ''}`}>
+        <p>{text}</p>
+      </div>
+    </Link>
+  );
+};
+
 type AppBarProps = {
   hidden: boolean;
 };
@@ -9,6 +40,7 @@ type AppBarProps = {
 const AppBar = ({ hidden }: AppBarProps) => {
   const router = useRouter();
   const [appBarClass, setAppBarClass] = useState(hidden ? 'app-bar-hide' : 'app-bar-show');
+  const [isArticle, setIsArticle] = useState(false);
 
   useEffect(() => {
     if (!hidden) {
@@ -18,44 +50,22 @@ const AppBar = ({ hidden }: AppBarProps) => {
     }
   }, [hidden]);
 
+  useEffect(() => {
+    if (router.pathname == '/articles/[article]') {
+      setIsArticle(true);
+    } else {
+      setIsArticle(false);
+    }
+  }, [router.pathname]);
+
   return (
     <div className="app-bar">
-      <div
-        className={`${appBarClass} ${
-          router.pathname == '/articles/[article]' ? 'app-bar-article' : ''
-        } `}
-      >
-        {/* <CodeOutlined />
-        <FileTextOutlined />
-        <LinkOutlined />
-        <CustomerServiceOutlined /> */}
-        <Link style={{ textDecoration: 'none', color: 'white' }} href={'/'}>
-          <div className="app-bar-element">
-            <p>Home</p>
-          </div>
-        </Link>
-        <Link style={{ textDecoration: 'none', color: 'white' }} href={'/about'}>
-          <div className="app-bar-element">
-            <p>About</p>
-          </div>
-        </Link>
-        <Link style={{ textDecoration: 'none', color: 'white' }} href={'/articles'}>
-          <div className="app-bar-element">
-            <p>Articles</p>
-          </div>
-        </Link>
-
-        <Link style={{ textDecoration: 'none', color: 'white' }} href={'/music'}>
-          <div className="app-bar-element">
-            <p>Music</p>
-          </div>
-        </Link>
-
-        <Link style={{ textDecoration: 'none', color: 'white' }} href={'/links'}>
-          <div className="app-bar-element">
-            <p>Links</p>
-          </div>
-        </Link>
+      <div className={`${appBarClass} ${isArticle ? 'app-bar-article' : ''}`}>
+        {appBarElements.map((el, i) => {
+          return (
+            <AppBarElement text={el.text} link={el.link} isArticle={isArticle} key={i.toString()} />
+          );
+        })}
       </div>
     </div>
   );
