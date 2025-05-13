@@ -1,6 +1,4 @@
-import { Space, Avatar } from 'antd';
 import Head from 'next/head';
-import Image from 'next/image';
 
 type LogoAndLanguageDisplayProps = {
   languagesAndLogos: string[][];
