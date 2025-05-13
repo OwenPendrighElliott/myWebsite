@@ -18,7 +18,6 @@ const Contemplation = () => {
         <meta name="tags" content="contemplation, coding, introspection, python" />
         <meta property="og:type" content="article" />
       </Head>
-      
     </div>
   );
 };

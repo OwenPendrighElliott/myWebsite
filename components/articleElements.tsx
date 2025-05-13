@@ -8,7 +8,6 @@ import { trackPromise, usePromiseTracker } from 'react-promise-tracker';
 import LoadingIndicator from './loadingPromise';
 import LoadingPromise from './loadingPromise';
 
-
 interface CodeProps {
   language: string;
   children: string;
@@ -37,9 +36,7 @@ interface TextProps {
 }
 
 export const ArticleBlock = ({ children }: TextProps) => {
-  return (
-    <ReactMarkdown className="article-markdown">{children}</ReactMarkdown>
-  );
+  return <ReactMarkdown className="article-markdown">{children}</ReactMarkdown>;
 };
 
 interface HeroImageProps {
@@ -47,7 +44,5 @@ interface HeroImageProps {
 }
 
 export const HeroImage = ({ imageURL }: HeroImageProps) => {
-  return (
-    <img className="article-image-header" src={imageURL} alt="Article Header Image" />
-  );
-}
+  return <img className="article-image-header" src={imageURL} alt="Article Header Image" />;
+};

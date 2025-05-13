@@ -2,7 +2,7 @@ import { ArticleBlock, HeroImage } from '@/components/articleElements';
 import Head from 'next/head';
 import React from 'react';
 
-const HERO_IMAGE = "/article_assets/ui-ux-vectorsearch/hero.webp";
+const HERO_IMAGE = '/article_assets/ui-ux-vectorsearch/hero.webp';
 
 const uiUxVectorSearch = () => {
   return (
@@ -11,7 +11,10 @@ const uiUxVectorSearch = () => {
         <title>UI and UX in Vector Search</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        <meta property="og:description" content="Desiging effective interfaces for multimodal vector search applications" />
+        <meta
+          property="og:description"
+          content="Desiging effective interfaces for multimodal vector search applications"
+        />
         <meta property="og:title" content="UI and UX in Vector Search" />
         <meta property="og:image" content={HERO_IMAGE} />
         <meta name="author" content="Owen Elliott" />
@@ -20,9 +23,8 @@ const uiUxVectorSearch = () => {
       </Head>
       <HeroImage imageURL={HERO_IMAGE} />
       <div className="article">
-        
-      <ArticleBlock>
-{`
+        <ArticleBlock>
+          {`
 # UI Concepts for Vector Search
 
 In this article we explore novel UI/UX concepts for implementing vector search in online image search applications. We also look at backend implementations to support these UI elements and explore techniques such as semantic filtering, weighted query combinations, custom instructions, and search as recommendation. The ability to compose queries as a combination of multiple elements via mathematical operations is a property of vector search that often goes under-utilised, these simple operations can turn vector search systems into semantic filters, recommenders, or even search ensembles. However, in the real world it is unreasonable to expect an end user to be aware of any of these mechanisms, the challenge becomes one of how these can be presented in at intuitive and usable manner by using an API. This article demonstrates some of the many ways this can be achieved by drawing influence from existing UX patterns and repurposing emerging UI patterns from LLM applications.
@@ -37,8 +39,8 @@ The elements discussed in this article can be used in concert to create unique s
 
 ![Example of vector search](/article_assets/ui-ux-vectorsearch/example1.gif)
 `}
-</ArticleBlock>
-    </div>
+        </ArticleBlock>
+      </div>
     </div>
   );
 };
