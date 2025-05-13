@@ -1,6 +1,14 @@
-import { ArticleBlock, CodeBlock, HeroImage } from '@/components/articleElements';
+import { HeroImage } from '@/components/articleElements';
 import Head from 'next/head';
 import React from 'react';
+
+// lazy load the ArticleBlock and CodeBlock components
+const ArticleBlock = React.lazy(() =>
+  import('@/components/articleElements').then((module) => ({ default: module.ArticleBlock })),
+);
+const CodeBlock = React.lazy(() =>
+  import('@/components/articleElements').then((module) => ({ default: module.CodeBlock })),
+);
 
 const HERO_IMAGE = '/article_assets/ui-ux-vectorsearch/hero.webp';
 

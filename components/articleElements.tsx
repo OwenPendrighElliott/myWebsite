@@ -3,7 +3,6 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import ReactMarkdown from 'react-markdown';
 
-
 interface CodeProps {
   language: string;
   children: string;
@@ -32,7 +31,11 @@ interface TextProps {
 }
 
 export const ArticleBlock = ({ children }: TextProps) => {
-  return <ReactMarkdown className="article-markdown">{children}</ReactMarkdown>;
+  return (
+    <div className="article-markdown">
+      <ReactMarkdown>{children}</ReactMarkdown>
+    </div>
+  );
 };
 
 interface HeroImageProps {

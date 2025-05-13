@@ -12,7 +12,6 @@ import '../components/appBar.css';
 import '../components/UISwitch.css';
 import type { AppProps } from 'next/app';
 import { wrapper } from '../store/store';
-import NextNProgress from 'nextjs-progressbar';
 import AppBar from '@/components/appBar';
 import { Provider, useSelector } from 'react-redux';
 import { selectIsCLI } from '@/store/homepageSlice';
@@ -26,7 +25,6 @@ function App({ Component, ...rest }: AppProps) {
   const router = useRouter();
   return (
     <Provider store={store}>
-      <NextNProgress />
       <AppBar hidden={isCLI && router.pathname == '/'}></AppBar>
       <Component {...pageProps} />
     </Provider>
