@@ -1,8 +1,13 @@
-import { ArticleBlock, CodeBlock, HeroImage } from '@/components/articleElements';
-import articleData from '@/utils/articleData';
-import { GetServerSideProps, GetStaticPaths } from 'next';
+import { HeroImage } from '@/components/articleElements';
 import Head from 'next/head';
 import React from 'react';
+
+const ArticleBlock = React.lazy(() =>
+  import('@/components/articleElements').then((module) => ({ default: module.ArticleBlock })),
+);
+const CodeBlock = React.lazy(() =>
+  import('@/components/articleElements').then((module) => ({ default: module.CodeBlock })),
+);
 
 const Contemplation = () => {
   return (

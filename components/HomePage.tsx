@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HomePage = () => {
+export const HomePage = () => {
   return (
     <div className="home-page">
       <h1>owenelliott.dev</h1>
@@ -27,5 +27,3 @@ const HomePage = () => {
     </div>
   );
 };
-
-export default HomePage;

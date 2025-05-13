@@ -1,12 +1,7 @@
-import React, { useEffect, useState, Suspense } from 'react';
+import React from 'react';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-const SyntaxHighlighter = React.lazy(() =>
-  import('react-syntax-highlighter').then((module) => ({ default: module.PrismAsyncLight })),
-);
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import ReactMarkdown from 'react-markdown';
-import { trackPromise, usePromiseTracker } from 'react-promise-tracker';
-import LoadingIndicator from './loadingPromise';
-import LoadingPromise from './loadingPromise';
 
 interface CodeProps {
   language: string;
@@ -36,7 +31,11 @@ interface TextProps {
 }
 
 export const ArticleBlock = ({ children }: TextProps) => {
-  return <ReactMarkdown className="article-markdown">{children}</ReactMarkdown>;
+  return (
+    <div className="article-markdown">
+      <ReactMarkdown>{children}</ReactMarkdown>
+    </div>
+  );
 };
 
 interface HeroImageProps {

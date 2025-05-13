@@ -11,7 +11,6 @@ const UISwitch = () => {
   }
 
   return (
-    // <div className={`ui-switch-container ${isCLI ? "fromcli" : "fromgui"}`}>
     <div className={`ui-switch-container`} onClick={toggle}>
       <div>Switch to {`${isCLI ? 'GUI' : 'CLI'}`}</div>
       <div className="ui-switch">

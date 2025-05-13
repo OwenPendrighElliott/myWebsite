@@ -2,8 +2,16 @@ import React, { useEffect } from 'react';
 import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import CommandLine from '../components/commandline';
-import HomePage from '@/components/HomePage';
+// import CommandLine from '../components/commandline';
+// import HomePage from '@/components/HomePage';
+
+const CommandLine = React.lazy(() =>
+  import('@/components/commandline').then((module) => ({ default: module.CommandLine })),
+);
+const HomePage = React.lazy(() =>
+  import('@/components/HomePage').then((module) => ({ default: module.HomePage })),
+);
+
 import { selectIsCLI, setIsCLI } from '@/store/homepageSlice';
 import UISwitch from '@/components/UISwitch';
 

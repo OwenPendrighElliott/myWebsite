@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -16,8 +16,8 @@ import processCommand, { autoCompleteDir } from '@/commandLogic/commandProcessor
 
 const LoginMessage = dynamic(() => import('./terminalBootup'), { ssr: false });
 
-function interleaveHistory(commands: string[], responses: string[]): JSX.Element[] {
-  let interleavedArr: JSX.Element[] = [];
+function interleaveHistory(commands: string[], responses: string[]): React.JSX.Element[] {
+  let interleavedArr: React.JSX.Element[] = [];
   for (let i = 0; i < commands.length; i++) {
     interleavedArr.push(<span>{commands[i]}</span>);
     interleavedArr.push(<span>{responses[i]}</span>);
@@ -25,7 +25,7 @@ function interleaveHistory(commands: string[], responses: string[]): JSX.Element
   return interleavedArr;
 }
 
-const CommandLine = () => {
+export const CommandLine = () => {
   const dispatch = useDispatch();
 
   const username = useSelector(selectUsername);
@@ -129,7 +129,7 @@ const CommandLine = () => {
         <div className="multiline">
           <LoginMessage />
         </div>
-        {interleaveHistory(commands, responses).map((txt: JSX.Element, i: number) => {
+        {interleaveHistory(commands, responses).map((txt: React.JSX.Element, i: number) => {
           return (
             <div key={i.toString()} style={{ whiteSpace: 'pre-wrap' }}>
               {txt}
@@ -155,5 +155,3 @@ const CommandLine = () => {
     </>
   );
 };
-
-export default CommandLine;
