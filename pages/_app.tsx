@@ -7,7 +7,7 @@ import '@/styles/musicPage.css';
 import '../components/terminalBootup.css';
 import '../components/commandline.css';
 import '../components/HomePage.css';
-import '../components/article.css';
+import '../components/articleElements.css';
 import '../components/appBar.css';
 import '../components/UISwitch.css';
 import type { AppProps } from 'next/app';
