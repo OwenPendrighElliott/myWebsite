@@ -12,7 +12,7 @@ interface LinkData {
 
 const LinkData: LinkData[] = [
   {
-    src: '/GitHubProfilePic.jpeg',
+    src: '/GitHubProfilePic.webp',
     alt: 'GitHub profile picture for Owen Pendrigh Elliott',
     title: 'GitHub',
     description:
@@ -20,7 +20,7 @@ const LinkData: LinkData[] = [
     href: 'https://github.com/OwenPendrighElliott/',
   },
   {
-    src: '/LinkedInProfilePic.jpeg',
+    src: '/LinkedInProfilePic.webp',
     alt: 'LinkedIn profile picture for Owen Pendrigh Elliott',
     title: 'LinkedIn',
     description:
@@ -28,7 +28,7 @@ const LinkData: LinkData[] = [
     href: 'https://www.linkedin.com/in/owen-elliott-345254166/',
   },
   {
-    src: '/AxiomaticTheoryBand.jpg',
+    src: '/AxiomaticTheoryBand.webp',
     alt: 'A photo of the band Axiomatic Theory',
     title: 'Axiomatic Theory',
     description: 'Check out my band Axiomatic Theory',
