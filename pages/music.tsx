@@ -34,21 +34,21 @@ const Music = () => {
         <div className="band-photos">
           <figure>
             <img
-              src="https://d3kjqeh110p10g.cloudfront.net/website-images/Owen.jpg"
+              src="https://d3kjqeh110p10g.cloudfront.net/website-images/Owen.webp"
               loading="lazy"
             />
             <figcaption>Owen</figcaption>
           </figure>
           <figure>
             <img
-              src="https://d3kjqeh110p10g.cloudfront.net/website-images/Nic.jpg"
+              src="https://d3kjqeh110p10g.cloudfront.net/website-images/Nic.webp"
               loading="lazy"
             />
             <figcaption>Nic</figcaption>
           </figure>
           <figure>
             <img
-              src="https://d3kjqeh110p10g.cloudfront.net/website-images/Sam.jpg"
+              src="https://d3kjqeh110p10g.cloudfront.net/website-images/Sam.webp"
               loading="lazy"
             />
             <figcaption>Sam</figcaption>

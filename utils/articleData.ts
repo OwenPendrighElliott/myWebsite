@@ -21,7 +21,7 @@ articleData.set('ui-ux-for-vector-search', {
 articleData.set('contemplation', {
   title: 'Introspection Utilities in Python',
   route: 'articles/contemplation',
-  displayImageURL: '/article_assets/ui-ux-vectorsearch/hero.webp',
+  displayImageURL: '/article_assets/contemplation/hero.webp',
   summary: 'Designing a library of introspection utilities in Python.',
   author: 'Owen Elliott',
   tags: 'introspection, coding, python',
@@ -30,7 +30,7 @@ articleData.set('contemplation', {
 articleData.set('multiprocessing-context', {
   title: 'A Multiprocessing Context for Python',
   route: 'articles/multiprocessing-context',
-  displayImageURL: '/article_assets/ui-ux-vectorsearch/hero.webp',
+  displayImageURL: '/article_assets/multiprocessing-context/hero.webp',
   summary: 'A context API for multiprocessing in Python.',
   author: 'Owen Elliott',
   tags: 'multiprocessing, python, introspection',

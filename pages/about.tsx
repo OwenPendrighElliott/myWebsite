@@ -24,12 +24,12 @@ const LogoAndLanguageDisplay = ({ languagesAndLogos }: LogoAndLanguageDisplayPro
 
 const About = () => {
   const languagesAndLogos = [
-    ['Python', '/Python.png'],
-    ['C++', '/CPP.png'],
-    ['JavaScript', '/JS.png'],
-    ['TypeScript', '/TS.png'],
-    ['SAS', '/SAS.png'],
-    ['SQL', '/sql.png'],
+    ['Python', '/Python.webp'],
+    ['C++', '/CPP.webp'],
+    ['JavaScript', '/JS.webp'],
+    ['TypeScript', '/TS.webp'],
+    ['SAS', '/SAS.webp'],
+    ['SQL', '/sql.webp'],
   ];
 
   return (
