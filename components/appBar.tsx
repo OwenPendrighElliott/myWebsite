@@ -11,6 +11,7 @@ const appBarElements: AppBarElementData[] = [
   { text: 'Home', link: '/' },
   { text: 'About', link: '/about' },
   { text: 'Articles', link: '/articles' },
+  { text: 'Papers', link: '/papers' },
   { text: 'Music', link: '/music' },
   { text: 'Links', link: '/links' },
 ];

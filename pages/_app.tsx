@@ -4,6 +4,7 @@ import '@/styles/articlePage.css';
 import '@/styles/linksPage.css';
 import '@/styles/aboutPage.css';
 import '@/styles/musicPage.css';
+import '@/styles/papersPage.css';
 import '../components/terminalBootup.css';
 import '../components/commandline.css';
 import '../components/HomePage.css';

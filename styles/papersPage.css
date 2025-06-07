@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.papers-title {
+  margin-bottom: 20px;
+}
+
+.paper-list-element {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  background-color: #0a121c;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px;
+  align-items: center;
+  transition: all 0.4s ease-in-out;
+}
+
+.paper-list-element img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.paper-title-abstract h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.paper-title-abstract p {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: #cccccc;
+}
+
+.paper-title-abstract button {
+  font-size: 16px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-radius: 50px;
+  background-color: #1f2937;
+  color: #cccccc;
+  border: none;
+}
+
+.paper-meta {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
