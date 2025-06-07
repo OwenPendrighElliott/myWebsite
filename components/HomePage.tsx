@@ -6,7 +6,7 @@ export const HomePage = () => {
       <h1>owenelliott.dev</h1>
       <div id={'home-page-blurb'} className="hello-world">
         <p className={'home-paragraph'}>
-          I am a solution architect and software engineer with a passion for solving complex
+          I am a solutions architect and software engineer with a passion for solving complex
           problems using cutting-edge technologies. I currently work at Marqo, a company that builds
           a tensor search engine that enables fast end to end search of multimodal data at scale.
         </p>
