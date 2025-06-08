@@ -5,6 +5,7 @@ import '@/styles/linksPage.css';
 import '@/styles/aboutPage.css';
 import '@/styles/musicPage.css';
 import '@/styles/papersPage.css';
+import '@/styles/chatPage.css';
 import '../components/terminalBootup.css';
 import '../components/commandline.css';
 import '../components/HomePage.css';

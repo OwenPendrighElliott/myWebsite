@@ -47,7 +47,7 @@
   background: red;
 }
 
-textarea {
+.terminal textarea {
   border: none;
   margin: 0;
   display: inline-block;
