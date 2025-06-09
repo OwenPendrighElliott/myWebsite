@@ -87,9 +87,11 @@ const MessageChat = ({ messages, currentUserName, onSendMessage }: RoomMessageCh
 const Chat = () => {
   const router = useRouter();
   const roomSlug = router.query.room;
+  const [userEnteredRoom, setUserEnteredRoom] = useState<string | null>(null);
   const [yourName, setYourName] = useState('');
   const [idsToNames, setIdsToNames] = useState<NameMap>({});
   const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [selfStream, setSelfStream] = useState<MediaStream | null>(null);
 
   const room: Room | null = useMemo(
     () => (router.isReady && typeof roomSlug === 'string' ? joinRoom(CONFIG, roomSlug) : null),
@@ -103,16 +105,12 @@ const Chat = () => {
 
   useEffect(() => {
     if (!room) return;
-    const [sendName, getName] = room.makeAction<string>('name');
+    const [sendName, getName] = room.makeAction<string>('name',);
     // messages are sent as a stringified JSON object
     const [sendMessage, getMessages] = room.makeAction<string>('message');
 
     // names
     getName((name, peerId) => setIdsToNames((prev) => ({ ...prev, [peerId]: name })));
-
-    room.onPeerJoin((peerId) => {
-      if (nameRef.current) sendName(nameRef.current, peerId);
-    });
 
     // messages
     getMessages((message, peerId) => {
@@ -120,15 +118,23 @@ const Chat = () => {
       setMessages((prev) => [...prev, parsedMessage]);
     });
 
-    // sync existing messages to new peer
-    room.onPeerJoin((peerId) => {
-      messages.forEach((msg) => {
-        const messageToSend = JSON.stringify(msg);
-        sendMessage(messageToSend, peerId);
-      });
+    if (nameRef.current) sendName(nameRef.current);
+
+    // room.onPeerJoin((peerId) => {
+    //   console.log(`Peer joined: ${peerId}`);
+    // });
+
+    room.onPeerJoin(peerId => {
+      // ① send them your name
+      if (nameRef.current) sendName(nameRef.current, peerId);
+
+      // ② sync the chat history
+      messages.forEach(msg => sendMessage(JSON.stringify(msg), peerId));
+
+      // ③ any extra side-effects (logging, etc.)
+      console.log(`Peer joined: ${peerId}`);
     });
 
-    if (nameRef.current) sendName(nameRef.current);
 
     return () => {
       room.leave();
@@ -141,7 +147,6 @@ const Chat = () => {
     sendName(yourName);
   }, [room, yourName]);
 
-  if (!router.isReady || !room) return <div>Loading…</div>;
 
   const handleSendMessageToPeers = (message: ChatMessage) => {
     if (!room) return;
@@ -150,6 +155,48 @@ const Chat = () => {
     const messageToSend = JSON.stringify(message);
     sendMessage(messageToSend);
   };
+
+  async function startVoiceStream(room: Room | null) {
+    if (!room) return;
+    const newSelfStream =  await navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: false
+    });
+    setSelfStream(newSelfStream);
+  };
+
+  async function removeVoiceStream(room: Room | null) {
+    if (!room || !selfStream) return;
+    room.removeStream(selfStream);
+    selfStream.getTracks().forEach((track) => track.stop());
+    setSelfStream(null);
+  }
+
+  
+  if (!router.isReady || !room) return (
+    <div className="page">
+      <Head>
+        <title>Chat</title>
+        <meta name="og:title" content="Chat" />
+        <meta name="og:description" content="Peer-to-peer chat interface with WebRTC" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <h1>Enter a room ID:</h1>
+      <input
+        type="text"
+        placeholder="Room ID"
+        value={userEnteredRoom || ''}
+        onChange={(e) => setUserEnteredRoom(e.target.value)}
+      />
+      <button
+        onClick={() => {
+          if (userEnteredRoom) router.push(`/chat?room=${userEnteredRoom}`);
+        }}
+      >
+        Join Room
+      </button>
+    </div>
+  );
 
   return (
     <div className="page">
