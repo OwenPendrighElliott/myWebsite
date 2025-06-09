@@ -1,10 +1,16 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { joinRoom, DataPayload, Room } from 'trystero';
+import { joinRoom, DataPayload, Room, selfId } from 'trystero';
+import {
+  getMessagesFromDB,
+  updateMessagesToDB,
+  getNameFromDB,
+  updateNameToDB,
+} from '@/utils/chatDB';
 
 type NameMap = Record<string, DataPayload>;
-interface ChatMessage {
+export interface ChatMessage {
   name: string;
   message: string;
   timestamp: number;
@@ -12,9 +18,22 @@ interface ChatMessage {
 
 const CONFIG = { appId: 'oe.dev' } as const;
 
-function getCurrentTimestampMs(): number {
-  return Math.floor(Date.now() / 1000);
+function consolidateMessages(messages: ChatMessage[]): ChatMessage[] {
+  messages.sort((a, b) => a.timestamp - b.timestamp);
+
+  const uniqueMessages: ChatMessage[] = [];
+  const seenMessages = new Set<string>();
+  for (const message of messages) {
+    const messageKey = `${message.name}|${message.message}|${message.timestamp}`;
+    if (!seenMessages.has(messageKey)) {
+      seenMessages.add(messageKey);
+      uniqueMessages.push(message);
+    }
+  }
+  return uniqueMessages;
 }
+
+const nowSeconds = () => Math.floor(Date.now() / 1000);
 
 type RoomMessageChatProps = {
   messages: ChatMessage[];
@@ -23,32 +42,24 @@ type RoomMessageChatProps = {
 };
 
 const MessageChat = ({ messages, currentUserName, onSendMessage }: RoomMessageChatProps) => {
-  const [newMessage, setNewMessage] = useState('');
+  const [draft, setDraft] = useState('');
 
-  const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setNewMessage(e.target.value);
-  };
-
-  const sendMessage = (message: string) => {
-    const chatMessage: ChatMessage = {
-      name: currentUserName,
-      message,
-      timestamp: getCurrentTimestampMs(),
-    };
-    onSendMessage(chatMessage);
+  const send = (text: string) => {
+    const msg: ChatMessage = { name: currentUserName, message: text, timestamp: nowSeconds() };
+    onSendMessage(msg);
   };
 
   return (
     <div className="room-chat">
-      {messages.map((msg, index) => (
+      {messages.map((m, i) => (
         <div
-          key={index}
-          className={`chat-message ${msg.name === currentUserName ? 'current-user-message' : 'other-user-message'}`}
+          key={i}
+          className={`chat-message ${m.name === currentUserName ? 'current-user-message' : 'other-user-message'}`}
         >
-          <span className="chat-name">{msg.name}</span>
-          <span className="chat-text">{msg.message}</span>
+          <span className="chat-name">{m.name}</span>
+          <span className="chat-text">{m.message}</span>
           <span className="chat-timestamp">
-            {new Date(msg.timestamp * 1000).toLocaleTimeString()}
+            {new Date(m.timestamp * 1000).toLocaleTimeString()}
           </span>
         </div>
       ))}
@@ -56,14 +67,14 @@ const MessageChat = ({ messages, currentUserName, onSendMessage }: RoomMessageCh
         <textarea
           className="chat-input"
           placeholder="Type your message here..."
-          value={newMessage}
-          onChange={handleMessageChange}
+          value={draft}
+          onChange={(e) => setDraft(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
               e.preventDefault();
-              if (newMessage.trim()) {
-                sendMessage(newMessage);
-                setNewMessage('');
+              if (draft.trim()) {
+                send(draft);
+                setDraft('');
               }
             }
           }}
@@ -71,9 +82,9 @@ const MessageChat = ({ messages, currentUserName, onSendMessage }: RoomMessageCh
         <button
           className="chat-send-button"
           onClick={() => {
-            if (newMessage.trim()) {
-              sendMessage(newMessage);
-              setNewMessage('');
+            if (draft.trim()) {
+              send(draft);
+              setDraft('');
             }
           }}
         >
@@ -87,9 +98,21 @@ const MessageChat = ({ messages, currentUserName, onSendMessage }: RoomMessageCh
 const Chat = () => {
   const router = useRouter();
   const roomSlug = router.query.room;
+  const [roomIdInput, setRoomIdInput] = useState('');
   const [yourName, setYourName] = useState('');
   const [idsToNames, setIdsToNames] = useState<NameMap>({});
   const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [selfStream, setSelfStream] = useState<MediaStream | null>(null);
+
+  useEffect(() => {
+    if (typeof roomSlug != 'string') return;
+    setMessages(getMessagesFromDB(roomSlug));
+    let nameFromDB = getNameFromDB(roomSlug);
+
+    if (nameFromDB !== null) {
+      setYourName(nameFromDB);
+    }
+  }, [roomSlug]);
 
   const room: Room | null = useMemo(
     () => (router.isReady && typeof roomSlug === 'string' ? joinRoom(CONFIG, roomSlug) : null),
@@ -99,40 +122,38 @@ const Chat = () => {
   const nameRef = useRef('');
   useEffect(() => {
     nameRef.current = yourName;
+    if (room && yourName) {
+      updateNameToDB(roomSlug as string, yourName);
+    }
   }, [yourName]);
+
+  const messagesRef = useRef<ChatMessage[]>([]);
+  useEffect(() => {
+    messagesRef.current = messages;
+    if (roomSlug && messages.length > 0) {
+      updateMessagesToDB(roomSlug as string, messages);
+    }
+  }, [messages]);
 
   useEffect(() => {
     if (!room) return;
+
     const [sendName, getName] = room.makeAction<string>('name');
-    // messages are sent as a stringified JSON object
-    const [sendMessage, getMessages] = room.makeAction<string>('message');
+    const [sendMsg, getMsg] = room.makeAction<string>('message');
 
-    // names
-    getName((name, peerId) => setIdsToNames((prev) => ({ ...prev, [peerId]: name })));
+    getName((n, id) => setIdsToNames((p) => ({ ...p, [id]: n })));
 
-    room.onPeerJoin((peerId) => {
-      if (nameRef.current) sendName(nameRef.current, peerId);
-    });
-
-    // messages
-    getMessages((message, peerId) => {
-      const parsedMessage: ChatMessage = JSON.parse(message);
-      setMessages((prev) => [...prev, parsedMessage]);
-    });
-
-    // sync existing messages to new peer
-    room.onPeerJoin((peerId) => {
-      messages.forEach((msg) => {
-        const messageToSend = JSON.stringify(msg);
-        sendMessage(messageToSend, peerId);
-      });
-    });
+    getMsg((raw) => setMessages((p) => consolidateMessages([...p, JSON.parse(raw)])));
 
     if (nameRef.current) sendName(nameRef.current);
 
-    return () => {
-      room.leave();
-    };
+    room.onPeerJoin((peerId) => {
+      setIdsToNames((p) => ({ ...p, [peerId]: 'Unknown' }));
+      if (nameRef.current) sendName(nameRef.current, peerId);
+      messagesRef.current.forEach((m) => sendMsg(JSON.stringify(m), peerId));
+    });
+
+    return () => void room.leave();
   }, [room]);
 
   useEffect(() => {
@@ -141,15 +162,51 @@ const Chat = () => {
     sendName(yourName);
   }, [room, yourName]);
 
-  if (!router.isReady || !room) return <div>Loading…</div>;
+  useEffect(() => {
+    if (room) setIdsToNames((p) => ({ ...p, [selfId]: yourName || 'Unknown' }));
+  }, [room, yourName]);
 
-  const handleSendMessageToPeers = (message: ChatMessage) => {
+  const broadcastMessage = (m: ChatMessage) => {
     if (!room) return;
-    setMessages((prev) => [...prev, message]);
-    const [sendMessage] = room.makeAction<string>('message');
-    const messageToSend = JSON.stringify(message);
-    sendMessage(messageToSend);
+    setMessages((p) => [...p, m]);
+    const [sendMsg] = room.makeAction<string>('message');
+    sendMsg(JSON.stringify(m));
   };
+
+  const startVoiceStream = async (r: Room | null) => {
+    if (!r) return;
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+    setSelfStream(stream);
+  };
+
+  const removeVoiceStream = async (r: Room | null) => {
+    if (!r || !selfStream) return;
+    r.removeStream(selfStream);
+    selfStream.getTracks().forEach((t) => t.stop());
+    setSelfStream(null);
+  };
+
+  if (!router.isReady || !room)
+    return (
+      <div className="page">
+        <Head>
+          <title>Chat</title>
+          <meta name="og:title" content="Chat" />
+          <meta name="og:description" content="Peer-to-peer chat interface with WebRTC" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        </Head>
+        <h1>Enter a room ID:</h1>
+        <input
+          type="text"
+          placeholder="Room ID"
+          value={roomIdInput}
+          onChange={(e) => setRoomIdInput(e.target.value)}
+        />
+        <button onClick={() => roomIdInput && router.push(`/chat?room=${roomIdInput}`)}>
+          Join Room
+        </button>
+      </div>
+    );
 
   return (
     <div className="page">
@@ -176,11 +233,12 @@ const Chat = () => {
           </li>
         ))}
       </ul>
+
       <h2>Messages</h2>
       <MessageChat
         messages={messages}
         currentUserName={yourName}
-        onSendMessage={handleSendMessageToPeers}
+        onSendMessage={broadcastMessage}
       />
     </div>
   );
